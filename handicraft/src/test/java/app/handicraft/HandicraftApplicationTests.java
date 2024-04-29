@@ -1,10 +1,10 @@
-package handicraft.app;
+package app.handicraft;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AppApplicationTests {
+class HandicraftApplicationTests {
 
 	@Test
 	void contextLoads() {
