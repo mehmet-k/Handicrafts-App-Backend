@@ -1,14 +1,11 @@
 package app.handicraft.model;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jdk.jfr.Unsigned;
 
 import java.util.UUID;
 
 public abstract class User {
-
     @GeneratedValue
     @Id
     private UUID id;
