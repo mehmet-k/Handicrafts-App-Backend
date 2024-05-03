@@ -1,4 +1,4 @@
-package app.handicraft.model;
+package app.handicraft.model.user;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

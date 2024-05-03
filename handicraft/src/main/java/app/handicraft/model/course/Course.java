@@ -1,9 +1,9 @@
-package app.handicraft.model;
+package app.handicraft.model.course;
 
+import app.handicraft.model.relation.ApplicantAttends;
 import jakarta.persistence.*;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,9 +17,10 @@ public class Course {
     private Boolean isActive;
     private Double baseCourseFee;
     private Double currentCourseFee;
-    @OneToMany
-    @JoinColumn(name = "applicant_id")
-    private List<Applicant> applicants;
+
+    @ManyToOne
+    @JoinColumn(name = "applicant_attends_id")
+    private List<ApplicantAttends> applicantAttends;
     @ManyToOne
     @JoinColumn(name = "course_type_id")
     private CourseType courseType;
@@ -29,7 +30,6 @@ public class Course {
         this.baseCourseFee = baseCourseFee;
         this.isActive = true;
         this.createInstant = Instant.now();
-        this.applicants = new ArrayList<>();
     }
 
     public UUID getId() {
@@ -94,13 +94,5 @@ public class Course {
 
     public void setCurrentCourseFee(Double currentCourseFee) {
         this.currentCourseFee = currentCourseFee;
-    }
-
-    public List<Applicant> getApplicants() {
-        return applicants;
-    }
-
-    public void setApplicants(List<Applicant> applicants) {
-        this.applicants = applicants;
     }
 }
