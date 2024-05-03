@@ -1,5 +1,6 @@
-package app.handicraft.model;
+package app.handicraft.model.course;
 
+import app.handicraft.model.course.Course;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
