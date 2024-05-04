@@ -6,6 +6,8 @@ import app.handicraft.model.course.Course;
 import app.handicraft.model.user.Applicant;
 import app.handicraft.repository.CourseRepository;
 
+import java.util.List;
+
 public class CourseService {
 
     private final CourseRepository courseRepository;
@@ -25,12 +27,5 @@ public class CourseService {
         return null;
     }
 
-    public void addApplicantToCourse(Course course, Applicant applicant){
-        applicantService.addCourseToApplicant(applicant,course);
-        /*applicant attends*/
-        course.getApplicantAttends().
-        course.getApplicants().add(applicant);
-        courseRepository.save(course);
-    }
 
 }

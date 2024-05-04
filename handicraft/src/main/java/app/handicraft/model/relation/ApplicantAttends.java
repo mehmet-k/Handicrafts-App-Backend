@@ -2,36 +2,29 @@ package app.handicraft.model.relation;
 
 import app.handicraft.model.course.Course;
 import app.handicraft.model.user.Applicant;
-import app.handicraft.model.user.Instructor;
 import app.handicraft.util.AttendanceStatus;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
 public class ApplicantAttends {
-
     @Id
-    UUID id;
-    Float fee;
-    AttendanceStatus applicationStatus;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructor_id")
-    List<Instructor> instructors;
-    @OneToOne(fetch = FetchType.LAZY)
+    private UUID id;
+    private Float fee;
+    private AttendanceStatus applicationStatus;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "applicant_id")
-    List<Applicant> applicants;
-    @OneToOne(fetch = FetchType.LAZY)
+    private Applicant applicant;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
-    List<Course> courses;
-    public ApplicantAttends(Float fee, AttendanceStatus applicationStatus) {
+    private Course courses;
+
+    public ApplicantAttends(Float fee, AttendanceStatus applicationStatus, Applicant applicant, Course courses) {
         this.fee = fee;
         this.applicationStatus = applicationStatus;
-        this.applicants = new ArrayList<>();
-        this.instructors = new ArrayList<>();
-        this.courses = new ArrayList<>();
+        this.applicant = applicant;
+        this.courses = courses;
     }
 
     public UUID getId() {
@@ -58,19 +51,19 @@ public class ApplicantAttends {
         this.applicationStatus = applicationStatus;
     }
 
-    public List<Instructor> getInstructors() {
-        return instructors;
+    public Applicant getApplicant() {
+        return applicant;
     }
 
-    public void setInstructors(List<Instructor> instructors) {
-        this.instructors = instructors;
+    public void setApplicant(Applicant applicant) {
+        this.applicant = applicant;
     }
 
-    public List<Applicant> getApplicants() {
-        return applicants;
+    public Course getCourses() {
+        return courses;
     }
 
-    public void setApplicants(List<Applicant> applicants) {
-        this.applicants = applicants;
+    public void setCourses(Course courses) {
+        this.courses = courses;
     }
 }

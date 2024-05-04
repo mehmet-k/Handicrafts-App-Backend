@@ -1,10 +1,8 @@
 package app.handicraft.model.handicraft;
 
 import app.handicraft.model.course.Course;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import app.handicraft.model.user.Instructor;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +15,12 @@ public class HandicraftType {
     private UUID id;
     private String name;
     private String explanation;
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "handicraft_id")
     private List<Handicraft> handicrafts ;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "instructor_id")
+    private List<Instructor> instructors;
 
     public HandicraftType(String name, String explanation) {
         this.name = name;

@@ -8,17 +8,16 @@ import java.util.UUID;
 
 @Entity
 public class Handicraft {
-
     @Id
     private UUID id;
     private Float fee;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "handicraft_type_id")
-    private List<HandicraftType> handicraftTypes;
+    private HandicraftType handicraftType;
 
-    public Handicraft(Float fee) {
+    public Handicraft(Float fee, HandicraftType handicraftType) {
         this.fee = fee;
-        this.handicraftTypes = new ArrayList<>();
+        this.handicraftType = handicraftType;
     }
 
     public UUID getId() {
@@ -37,11 +36,11 @@ public class Handicraft {
         this.fee = fee;
     }
 
-    public List<HandicraftType> getHandicraftTypes() {
-        return handicraftTypes;
+    public HandicraftType getHandicraftType() {
+        return handicraftType;
     }
 
-    public void setHandicraftTypes(List<HandicraftType> handicraftTypes) {
-        this.handicraftTypes = handicraftTypes;
+    public void setHandicraftType(HandicraftType handicraftType) {
+        this.handicraftType = handicraftType;
     }
 }

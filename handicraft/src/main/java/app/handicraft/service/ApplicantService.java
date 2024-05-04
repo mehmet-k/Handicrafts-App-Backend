@@ -8,6 +8,8 @@ import app.handicraft.model.user.Applicant;
 import app.handicraft.repository.ApplicantRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ApplicantService {
 
@@ -40,8 +42,4 @@ public class ApplicantService {
         return applicantRepository.save(applicant);
     }
 
-    public void addCourseToApplicant(Applicant applicant, Course course){
-        applicant.getCourses().add(course);
-        applicantRepository.save(applicant);
-    }
 }

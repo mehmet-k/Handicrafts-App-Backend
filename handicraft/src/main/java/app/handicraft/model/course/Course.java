@@ -7,6 +7,7 @@ import app.handicraft.model.user.Instructor;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,25 +19,17 @@ public class Course {
     private Instant createInstant;
     private Instant closeInstant;
     private Boolean isActive;
-    private Double baseCourseFee;
-    private Double currentCourseFee;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    private Float baseCourseFee;
+    private Float currentCourseFee;
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "applicant_attends_id")
     private List<ApplicantAttends> applicantAttends;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "applicant_id")
-    private List<Applicant> applicants;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructor_id")
-    private List<Instructor> instructors;
-    public Course(String name, HandicraftType courseType, Double baseCourseFee) {
+    public Course(String name, HandicraftType courseType, Float baseCourseFee) {
         this.name = name;
         this.baseCourseFee = baseCourseFee;
         this.isActive = true;
         this.createInstant = Instant.now();
+        this.applicantAttends = new ArrayList<>();
     }
 
     public UUID getId() {
@@ -79,19 +72,29 @@ public class Course {
         isActive = active;
     }
 
-    public Double getBaseCourseFee() {
+    public Float getBaseCourseFee() {
         return baseCourseFee;
     }
 
-    public void setBaseCourseFee(Double baseCourseFee) {
+    public void setBaseCourseFee(Float baseCourseFee) {
         this.baseCourseFee = baseCourseFee;
     }
 
-    public Double getCurrentCourseFee() {
+    public Float getCurrentCourseFee() {
         return currentCourseFee;
     }
 
-    public void setCurrentCourseFee(Double currentCourseFee) {
+    public void setCurrentCourseFee(Float currentCourseFee) {
         this.currentCourseFee = currentCourseFee;
     }
+
+    public List<ApplicantAttends> getApplicantAttends() {
+        return applicantAttends;
+    }
+
+    public void setApplicantAttends(List<ApplicantAttends> applicantAttends) {
+        this.applicantAttends = applicantAttends;
+    }
+
+
 }
