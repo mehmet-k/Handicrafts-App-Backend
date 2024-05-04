@@ -1,6 +1,9 @@
 package app.handicraft.model.course;
 
+import app.handicraft.model.handicraft.HandicraftType;
 import app.handicraft.model.relation.ApplicantAttends;
+import app.handicraft.model.user.Applicant;
+import app.handicraft.model.user.Instructor;
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -18,15 +21,19 @@ public class Course {
     private Double baseCourseFee;
     private Double currentCourseFee;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "applicant_attends_id")
     private List<ApplicantAttends> applicantAttends;
-    @ManyToOne
-    @JoinColumn(name = "course_type_id")
-    private CourseType courseType;
-    public Course(String name, CourseType courseType, Double baseCourseFee) {
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "applicant_id")
+    private List<Applicant> applicants;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "instructor_id")
+    private List<Instructor> instructors;
+    public Course(String name, HandicraftType courseType, Double baseCourseFee) {
         this.name = name;
-        this.courseType = courseType;
         this.baseCourseFee = baseCourseFee;
         this.isActive = true;
         this.createInstant = Instant.now();
@@ -70,14 +77,6 @@ public class Course {
 
     public void setActive(Boolean active) {
         isActive = active;
-    }
-
-    public CourseType getCourseType() {
-        return courseType;
-    }
-
-    public void setCourseType(CourseType courseType) {
-        this.courseType = courseType;
     }
 
     public Double getBaseCourseFee() {

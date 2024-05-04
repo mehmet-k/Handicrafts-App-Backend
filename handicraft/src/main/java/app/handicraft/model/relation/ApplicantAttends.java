@@ -23,7 +23,7 @@ public class ApplicantAttends {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "applicant_id")
     List<Applicant> applicants;
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     List<Course> courses;
     public ApplicantAttends(Float fee, AttendanceStatus applicationStatus) {
