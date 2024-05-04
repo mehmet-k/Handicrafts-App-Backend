@@ -2,6 +2,8 @@ package app.handicraft.service;
 
 import app.handicraft.dto.createApplicant.CreateApplicantRequest;
 import app.handicraft.dto.updateApplicant.UpdateApplicantRequest;
+import app.handicraft.model.course.Course;
+import app.handicraft.model.relation.ApplicantAttends;
 import app.handicraft.model.user.Applicant;
 import app.handicraft.repository.ApplicantRepository;
 import org.springframework.stereotype.Service;
@@ -36,5 +38,10 @@ public class ApplicantService {
         applicant.setAddress(updateApplicantRequest.address());
         applicant.seteMail(updateApplicantRequest.eMail());
         return applicantRepository.save(applicant);
+    }
+
+    public void addCourseToApplicant(Applicant applicant, Course course){
+        applicant.getCourses().add(course);
+        applicantRepository.save(applicant);
     }
 }
