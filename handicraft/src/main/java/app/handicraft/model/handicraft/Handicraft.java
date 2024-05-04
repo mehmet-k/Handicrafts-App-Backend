@@ -2,6 +2,7 @@ package app.handicraft.model.handicraft;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,9 +16,9 @@ public class Handicraft {
     @JoinColumn(name = "handicraft_type_id")
     private List<HandicraftType> handicraftTypes;
 
-    public Handicraft(Float fee, List<HandicraftType> handicraftTypes) {
+    public Handicraft(Float fee) {
         this.fee = fee;
-        this.handicraftTypes = handicraftTypes;
+        this.handicraftTypes = new ArrayList<>();
     }
 
     public UUID getId() {

@@ -17,13 +17,13 @@ public class ApplicantAttends {
     UUID id;
     Float fee;
     AttendanceStatus applicationStatus;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "instructor_id")
     List<Instructor> instructors;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "applicant_id")
     List<Applicant> applicants;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     List<Course> courses;
     public ApplicantAttends(Float fee, AttendanceStatus applicationStatus) {
