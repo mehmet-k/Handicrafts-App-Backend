@@ -1,4 +1,9 @@
 package app.handicraft.dto.createApplicant;
 
-public record CreateApplicantResponse() {
+import java.util.UUID;
+
+public record CreateApplicantResponse(
+        String userName,
+        UUID id
+) {
 }

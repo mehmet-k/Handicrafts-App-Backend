@@ -1,4 +1,9 @@
 package app.handicraft.dto.updateApplicant;
 
-public class UpdateApplicantResponse {
+import java.util.UUID;
+
+public record UpdateApplicantResponse (
+        UUID id,
+        String userName
+) {
 }

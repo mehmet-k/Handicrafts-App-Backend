@@ -16,10 +16,25 @@ public class ApplicantService {
     }
 
     public Applicant addApplicant(CreateApplicantRequest createApplicantRequest){
-        return null;
+        if(createApplicantRequest==null){
+            throw new RuntimeException();
+        }
+        var applicant = new Applicant(createApplicantRequest.userName(), createApplicantRequest.surname(), createApplicantRequest.name(),createApplicantRequest.surname(),
+                createApplicantRequest.phoneNumber(),createApplicantRequest.address());
+        return applicantRepository.save(applicant);
     }
 
     public Applicant updateApplicant(UpdateApplicantRequest updateApplicantRequest){
-        return null;
+        if(updateApplicantRequest==null){
+            throw new RuntimeException();
+        }
+        var applicant = applicantRepository.findById(updateApplicantRequest.id()).orElseThrow(RuntimeException::new);
+        applicant.setUserName(updateApplicantRequest.userName());
+        applicant.setName(updateApplicantRequest.name());
+        applicant.setSurname(updateApplicantRequest.surname());
+        applicant.setPhoneNumber(updateApplicantRequest.phoneNumber());
+        applicant.setAddress(updateApplicantRequest.address());
+        applicant.seteMail(updateApplicantRequest.eMail());
+        return applicantRepository.save(applicant);
     }
 }
