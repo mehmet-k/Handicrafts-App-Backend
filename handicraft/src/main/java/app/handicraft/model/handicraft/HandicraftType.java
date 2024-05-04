@@ -1,4 +1,4 @@
-package app.handicraft.model.course;
+package app.handicraft.model.handicraft;
 
 import app.handicraft.model.course.Course;
 import jakarta.persistence.Entity;
@@ -11,28 +11,20 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class CourseType {
+public class HandicraftType {
 
     @Id
     private UUID id;
     private String name;
     private String explanation;
     @OneToMany
-    @JoinColumn(name = "course_id")
-    private List<Course> courseList;
+    @JoinColumn(name = "handicraft_id")
+    private List<Handicraft> handicrafts ;
 
-    public CourseType(String name, String explanation) {
+    public HandicraftType(String name, String explanation) {
         this.name = name;
         this.explanation = explanation;
-        this.courseList = new ArrayList<>();
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
+        this.handicrafts = new ArrayList<>();
     }
 
     public String getName() {
@@ -51,11 +43,11 @@ public class CourseType {
         this.explanation = explanation;
     }
 
-    public List<Course> getCourseList() {
-        return courseList;
+    public List<Handicraft> getHandicrafts() {
+        return handicrafts;
     }
 
-    public void setCourseList(List<Course> courseList) {
-        this.courseList = courseList;
+    public void setHandicrafts(List<Handicraft> handicrafts) {
+        this.handicrafts = handicrafts;
     }
 }
