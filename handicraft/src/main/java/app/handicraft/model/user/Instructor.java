@@ -17,9 +17,13 @@ public class Instructor extends User {
     @JoinColumn(name = "course_id")
     List<Course> courses;
 
+    //instructor  uygun olduğu vakitler eklenecek( haftada belli günlerde belli saatler)
+
     public Instructor(String userName, String name, String surname, String eMail, String phoneNumber, String address) {
         super(userName, name, surname, eMail, phoneNumber, address);
         this.applicantAttends = new ArrayList<>();
         this.courses = new ArrayList<>();
     }
+
+
 }

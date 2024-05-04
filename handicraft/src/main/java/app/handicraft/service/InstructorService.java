@@ -10,5 +10,7 @@ public class InstructorService {
         this.instructorRepository = instructorRepository;
     }
 
+    publiaddHandicraftTypeToInstructor(){}
 
+    public boolean checkInstructorAvailability(){return true;}
 }
