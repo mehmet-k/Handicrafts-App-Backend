@@ -2,9 +2,13 @@ package app.handicraft.service;
 
 import app.handicraft.dto.createApplicant.CreateApplicantRequest;
 import app.handicraft.dto.updateApplicant.UpdateApplicantRequest;
+import app.handicraft.model.course.Course;
+import app.handicraft.model.relation.ApplicantAttends;
 import app.handicraft.model.user.Applicant;
 import app.handicraft.repository.ApplicantRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ApplicantService {
@@ -37,4 +41,5 @@ public class ApplicantService {
         applicant.seteMail(updateApplicantRequest.eMail());
         return applicantRepository.save(applicant);
     }
+
 }
