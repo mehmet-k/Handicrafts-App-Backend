@@ -7,6 +7,7 @@ public record CreateInstructorRequest(
         String eMail,
         String phoneNumber,
         String address,
-        Float  fee
+        Float  weekdayFee,
+        Float  weekendFee
 ) {
 }
