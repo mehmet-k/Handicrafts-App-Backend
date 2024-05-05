@@ -5,9 +5,11 @@ import app.handicraft.dto.updateCourse.UpdateCourseRequest;
 import app.handicraft.model.course.Course;
 import app.handicraft.model.user.Applicant;
 import app.handicraft.repository.CourseRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CourseService {
 
     private final CourseRepository courseRepository;
@@ -25,6 +27,13 @@ public class CourseService {
 
     public Course updateCourse(UpdateCourseRequest updateCourseRequest){
         return null;
+    }
+
+    public Course updateCourse(Course course){
+        if(course == null){
+            throw new RuntimeException();
+        }
+        return courseRepository.save(course);
     }
 
     public void addApplicantToCourse(){}
