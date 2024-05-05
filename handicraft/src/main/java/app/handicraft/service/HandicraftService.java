@@ -5,9 +5,8 @@ import app.handicraft.dto.updateCourse.UpdateCourseRequest;
 import app.handicraft.model.course.Course;
 import app.handicraft.model.handicraft.Handicraft;
 import app.handicraft.repository.CourseRepository;
-import org.springframework.stereotype.Service;
 
-@Service
+
 public class HandicraftService {
 
     private final HandicraftRepository handicraftRepository;

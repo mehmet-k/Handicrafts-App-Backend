@@ -1,4 +1,8 @@
 package app.handicraft.dto.createCourse;
 
-public record CreateCourseResponse() {
+import java.util.UUID;
+
+public record CreateCourseResponse(
+        UUID id
+) {
 }

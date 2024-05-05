@@ -15,11 +15,10 @@ public class HandicraftType {
     private UUID id;
     private String name;
     private String explanation;
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "handicraft_id")
     private List<Handicraft> handicrafts ;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructor_id")
+    @ManyToMany(mappedBy = "courseTypes")
     private List<Instructor> instructors;
 
     public HandicraftType(String name, String explanation) {
@@ -50,5 +49,21 @@ public class HandicraftType {
 
     public void setHandicrafts(List<Handicraft> handicrafts) {
         this.handicrafts = handicrafts;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public List<Instructor> getInstructors() {
+        return instructors;
+    }
+
+    public void setInstructors(List<Instructor> instructors) {
+        this.instructors = instructors;
     }
 }
