@@ -32,7 +32,7 @@ public class ApplicantService {
         if(updateApplicantRequest==null){
             throw new RuntimeException();
         }
-        var applicant = applicantRepository.findById(updateApplicantRequest.id()).orElseThrow(RuntimeException::new);
+        var applicant = applicantRepository.findById(updateApplicantRequest.id()).orElseThrow(()->new RuntimeException("Applicant with this id does not exist"));
         applicant.setUserName(updateApplicantRequest.userName());
         applicant.setName(updateApplicantRequest.name());
         applicant.setSurname(updateApplicantRequest.surname());
@@ -41,5 +41,7 @@ public class ApplicantService {
         applicant.seteMail(updateApplicantRequest.eMail());
         return applicantRepository.save(applicant);
     }
+
+    
 
 }
