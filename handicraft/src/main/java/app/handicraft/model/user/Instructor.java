@@ -14,8 +14,12 @@ import java.util.List;
 @Entity
 public class Instructor extends User {
     private Float fee;
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "handicraft_type_list")
+    @ManyToMany
+    @JoinTable(
+            name = "instructor_handicraft_type", // Name of the join table
+            joinColumns = @JoinColumn(name = "instructor_id"), // Column in the join table that references the instructor
+            inverseJoinColumns = @JoinColumn(name = "handicraft_type_id") // Column in the join table that references the course type
+    )
     private List<HandicraftType> handicraftTypeList;
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "instructor_attends_id")

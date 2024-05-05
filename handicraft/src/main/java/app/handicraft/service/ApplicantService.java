@@ -9,6 +9,7 @@ import app.handicraft.repository.ApplicantRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ApplicantService {
@@ -28,11 +29,11 @@ public class ApplicantService {
         return applicantRepository.save(applicant);
     }
 
-    public Applicant updateApplicant(UpdateApplicantRequest updateApplicantRequest){
+    public Applicant updateApplicant(UpdateApplicantRequest updateApplicantRequest,UUID id){
         if(updateApplicantRequest==null){
             throw new RuntimeException();
         }
-        var applicant = applicantRepository.findById(updateApplicantRequest.id()).orElseThrow(RuntimeException::new);
+        var applicant = applicantRepository.findById(id).orElseThrow(()-> new RuntimeException("Applicant with this ID doesn't exists"));
         applicant.setUserName(updateApplicantRequest.userName());
         applicant.setName(updateApplicantRequest.name());
         applicant.setSurname(updateApplicantRequest.surname());
@@ -40,6 +41,15 @@ public class ApplicantService {
         applicant.setAddress(updateApplicantRequest.address());
         applicant.seteMail(updateApplicantRequest.eMail());
         return applicantRepository.save(applicant);
+    }
+
+    public Applicant getApplicantById(UUID id){
+        return applicantRepository.findById(id).orElseThrow(()->new RuntimeException("Applicant with this ID doesn't exists"));
+    }
+
+    public Applicant getApplicantByUserName(String userName){
+        return applicantRepository.findApplicantByUserName(userName)
+                .orElseThrow(()->new RuntimeException("Applicant with user name ID doesn't exists"));
     }
 
 }
