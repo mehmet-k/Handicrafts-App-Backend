@@ -21,15 +21,35 @@ public class Course {
     private Boolean isActive;
     private Float baseCourseFee;
     private Float currentCourseFee;
+    private Integer maxAttendants;
+    private Integer attendantCount;
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "applicant_attends_id")
     private List<ApplicantAttends> applicantAttends;
-    public Course(String name, HandicraftType courseType, Float baseCourseFee) {
+    public Course(String name, HandicraftType courseType, Float baseCourseFee, Integer maxAttendants) {
         this.name = name;
         this.baseCourseFee = baseCourseFee;
         this.isActive = true;
         this.createInstant = Instant.now();
         this.applicantAttends = new ArrayList<>();
+        this.maxAttendants = maxAttendants;
+        this.attendantCount = 0;
+    }
+
+    public Integer getAttendantCount() {
+        return attendantCount;
+    }
+
+    public void setAttendantCount(Integer attendantCount) {
+        this.attendantCount = attendantCount;
+    }
+
+    public Integer getMaxAttendants() {
+        return maxAttendants;
+    }
+
+    public void setMaxAttendants(Integer maxAttendants) {
+        this.maxAttendants = maxAttendants;
     }
 
     public UUID getId() {
