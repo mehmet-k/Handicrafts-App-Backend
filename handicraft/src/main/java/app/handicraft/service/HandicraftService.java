@@ -1,9 +1,11 @@
 package app.handicraft.service;
 
 import app.handicraft.dto.createCourse.CreateCourseRequest;
+import app.handicraft.dto.createHandicraft.CreateHandicraftRequest;
 import app.handicraft.dto.updateCourse.UpdateCourseRequest;
 import app.handicraft.model.course.Course;
 import app.handicraft.model.handicraft.Handicraft;
+import app.handicraft.model.handicraft.HandicraftType;
 import app.handicraft.repository.CourseRepository;
 
 
@@ -15,7 +17,7 @@ public class HandicraftService {
         this.HandicraftRepository = handicraftRepository;
     }
 
-    public Handicraft addHandicraft(CreateHandicraftRequest createHandicraftRequestRequest){
+    public Handicraft addHandicraft(CreateHandicraftRequest createHandicraftRequest){
         return null;
     }
 

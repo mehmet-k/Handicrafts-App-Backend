@@ -45,10 +45,4 @@ public class ApplicantController {
     public Applicant getApplicantByUserName(@PathVariable String userName){
         return applicantService.getApplicantByUserName(userName);
     }
-
-
-
-
-
-
 }
