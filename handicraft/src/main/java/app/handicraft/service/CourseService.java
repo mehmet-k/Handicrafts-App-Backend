@@ -36,11 +36,6 @@ public class CourseService {
         return courseRepository.save(course);
     }
 
-    public void addApplicantToCourse(){}
-
-    public void addCourseToApplicant(){}
-
-    public void addHandicraftToCourse(){}
 
 
 }

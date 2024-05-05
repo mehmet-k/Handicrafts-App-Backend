@@ -13,7 +13,8 @@ import java.util.List;
 
 @Entity
 public class Instructor extends User {
-    private Float fee;
+    private Float weekdayFee;
+    private Float weekendFee;
     @ManyToMany
     @JoinTable(
             name = "instructor_handicraft_type", // Name of the join table
@@ -24,19 +25,28 @@ public class Instructor extends User {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "instructor_attends_id")
     private List<InstructorAttends> instructorAttends;
-    public Instructor(String userName, String name, String surname, String eMail, String phoneNumber, String address,Float fee) {
+    public Instructor(String userName, String name, String surname, String eMail, String phoneNumber, String address,Float weekdayFee, Float weekendFee) {
         super(userName, name, surname, eMail, phoneNumber, address);
         this.handicraftTypeList = new ArrayList<>();
         this.instructorAttends = new ArrayList<>();
-        this.fee = fee;
+        this.weekdayFee = weekdayFee;
+        this.weekendFee = weekendFee;
     }
 
-    public Float getFee() {
-        return fee;
+    public Float getWeekdayFee() {
+        return weekdayFee;
     }
 
-    public void setFee(Float fee) {
-        this.fee = fee;
+    public void setWeekdayFee(Float weekdayFee) {
+        this.weekdayFee = weekdayFee;
+    }
+
+    public Float getWeekendFee() {
+        return weekendFee;
+    }
+
+    public void setWeekendFee(Float weekendFee) {
+        this.weekendFee = weekendFee;
     }
 
     public List<InstructorAttends> getInstructorAttends() {

@@ -24,7 +24,7 @@ public class InstructorService {
             throw new RuntimeException();
         }
         var instructor = new Instructor(createInstructorRequest.userName(), createInstructorRequest.surname(), createInstructorRequest.name(),createInstructorRequest.surname(),
-                createInstructorRequest.phoneNumber(),createInstructorRequest.address(),createInstructorRequest.fee());
+                createInstructorRequest.phoneNumber(),createInstructorRequest.address(),createInstructorRequest.weekdayFee(),createInstructorRequest.weekendFee());
         return instructorRepository.save(instructor);
     }
 
@@ -39,6 +39,9 @@ public class InstructorService {
         instructor.setPhoneNumber(updateInstructorRequest.phoneNumber());
         instructor.setAddress(updateInstructorRequest.address());
         instructor.seteMail(updateInstructorRequest.eMail());
+        instructor.setWeekdayFee(updateInstructorRequest.weekdayFee());
+        instructor.setWeekendFee(updateInstructorRequest.weekendFee());
+
         return instructorRepository.save(instructor);
     }
 
