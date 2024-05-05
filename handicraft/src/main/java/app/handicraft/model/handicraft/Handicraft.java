@@ -1,5 +1,7 @@
 package app.handicraft.model.handicraft;
 
+import app.handicraft.model.relation.InstructorAttends;
+import app.handicraft.model.user.Instructor;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -15,9 +17,22 @@ public class Handicraft {
     @JoinColumn(name = "handicraft_type_id")
     private HandicraftType handicraftType;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "instructor_attends_id")
+    private List<InstructorAttends> instructorAttends;
+
     public Handicraft(Float fee, HandicraftType handicraftType) {
         this.fee = fee;
         this.handicraftType = handicraftType;
+        this.instructorAttends = new ArrayList<>();
+    }
+
+    public List<InstructorAttends> getInstructorAttends() {
+        return instructorAttends;
+    }
+
+    public void setInstructorAttends(List<InstructorAttends> instructorAttends) {
+        this.instructorAttends = instructorAttends;
     }
 
     public UUID getId() {
