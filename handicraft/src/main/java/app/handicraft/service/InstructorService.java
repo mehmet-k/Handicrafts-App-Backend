@@ -6,8 +6,7 @@ import app.handicraft.dto.updateApplicant.UpdateApplicantRequest;
 import app.handicraft.dto.updateInstructor.UpdateInstructorRequest;
 import app.handicraft.model.handicraft.Handicraft;
 import app.handicraft.model.handicraft.HandicraftType;
-import app.handicraft.model.user.Applicant;
-import app.handicraft.model.user.Instructor;
+import app.handicraft.model.user.*;
 import app.handicraft.repository.InstructorRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +19,11 @@ public class InstructorService {
 
     private final InstructorRepository instructorRepository;
 
-    public InstructorService(InstructorRepository instructorRepository) {
+    private final HandicraftTypeService handicraftTypeService;
+
+    public InstructorService(InstructorRepository instructorRepository, HandicraftTypeService handicraftTypeService) {
         this.instructorRepository = instructorRepository;
+        this.handicraftTypeService = handicraftTypeService;
     }
 
     public Instructor addInstructor(CreateInstructorRequest createInstructorRequest){
@@ -30,6 +32,9 @@ public class InstructorService {
         }
         var instructor = new Instructor(createInstructorRequest.userName(), createInstructorRequest.surname(), createInstructorRequest.name(),createInstructorRequest.surname(),
                 createInstructorRequest.phoneNumber(),createInstructorRequest.address(),createInstructorRequest.weekdayFee(),createInstructorRequest.weekendFee());
+        if(createInstructorRequest.handicraftTypeIds()!=null){
+            instructor.setHandicraftTypeList(handicraftTypeService.getAllHandicraftTypesByIds(createInstructorRequest.handicraftTypeIds()));
+        }
         return instructorRepository.save(instructor);
     }
 
@@ -97,6 +102,23 @@ public class InstructorService {
     }
 
     public boolean checkInstructorAvailability(){return true;}
+
+    public List<Instructor> getAllInstructors(){
+        return instructorRepository.findAll();
+    }
+
+    public List<InstructorView> convertInstructorListToInstructorViewList(List<Instructor> instructors){
+        List<InstructorView> instructorViews = new ArrayList<>();
+        for(Instructor i:instructors){
+            instructorViews.add(new InstructorView(i.getId(),i.getUserName(),i.getName(),
+                    i.getSurname(),i.geteMail(),i.getPhoneNumber(),i.getAddress(),i.getWeekdayFee(),i.getWeekendFee(),i.getDays()));
+        }
+        return instructorViews;
+    }
+
+    public List<UserView> getAllInstructorViews(){
+        return null;
+    }
 
 
 

@@ -71,6 +71,6 @@ public class CourseController {
 
     @GetMapping("/allViews")
     public List<CourseView> getAllCourseViews(){
-        return courseService.getAllCourseView();
+        return courseService.getAllCourseViews();
     }
 }

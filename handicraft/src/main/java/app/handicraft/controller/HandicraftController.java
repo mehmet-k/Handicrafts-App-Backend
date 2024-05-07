@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -25,9 +26,8 @@ public class HandicraftController {
 
     @PostMapping
     public ResponseEntity<CreateHandicraftResponse> createHandicraft(@RequestBody CreateHandicraftRequest createHandicraftRequest){
-        //var handicraft = handicraftService.addHandicraft(createHandicraftRequest);
-        //return new ResponseEntity<>(new CreateHandicraftResponse(handicraft), HttpStatus.CREATED);
-        return null;
+        var handicraft = handicraftService.addHandicraft(createHandicraftRequest);
+        return new ResponseEntity<>(new CreateHandicraftResponse(handicraft), HttpStatus.CREATED);
     }
 
     @GetMapping("/get/{id}")
@@ -38,5 +38,10 @@ public class HandicraftController {
     @PutMapping("/{id}")
     public Handicraft addHandicraftToInstructor(){
         return null;
+    }
+
+    @GetMapping("/all")
+    public List<Handicraft> getAllHandicrafts(){
+        return handicraftService.getAllHandicrafts();
     }
 }

@@ -24,9 +24,12 @@ public class CourseService {
     private final CourseRepository courseRepository;
     private final ApplicantService applicantService;
 
-    public CourseService(CourseRepository courseRepository, ApplicantService applicantService) {
+    private final HandicraftService handicraftService;
+
+    public CourseService(CourseRepository courseRepository, ApplicantService applicantService, HandicraftService handicraftService) {
         this.courseRepository = courseRepository;
         this.applicantService = applicantService;
+        this.handicraftService = handicraftService;
     }
 
     public Course addCourse(CreateCourseRequest createCourseRequest){
@@ -119,7 +122,7 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
-    public List<CourseView> getAllCourseView(){
+    public List<CourseView> getAllCourseViews(){
         List<Course> courses = courseRepository.findAll();
         return convertCourseListToCourseViewList(courses);
     }
@@ -129,11 +132,10 @@ public class CourseService {
         for(Course c:courses){
             courseViews
                     .add(new CourseView(c.getId(),c.getName(),c.getCurrentCourseFee(),c.getMaxAttendants(),
-                            c.getAttendantCount(),c.getHandicrafts(),c.getDays()));
+                            c.getAttendantCount(),handicraftService.convertHandicraftListToHandicraftViewList(c.getHandicrafts()),c.getDays()));
         }
         return courseViews;
     }
-
 
     public List<Course> getCoursesByIds(List<UUID> idList){
         List<Course> courses = new ArrayList<>();

@@ -21,12 +21,9 @@ public class ApplicantService {
     private final ApplicantRepository applicantRepository;
     private final ApplicantParticipationRepository applicantParticipationRepository;
 
-    private final CourseService courseService;
-
-    public ApplicantService(ApplicantRepository applicantRepository, ApplicantParticipationRepository applicantParticipationRepository, CourseService courseService) {
+    public ApplicantService(ApplicantRepository applicantRepository, ApplicantParticipationRepository applicantParticipationRepository) {
         this.applicantRepository = applicantRepository;
         this.applicantParticipationRepository = applicantParticipationRepository;
-        this.courseService = courseService;
     }
 
     public Applicant addApplicant(CreateApplicantRequest createApplicantRequest){
@@ -91,44 +88,6 @@ public class ApplicantService {
         return applicantAttends;
     }
 
-    public List<CourseView> getApplicantCourseViews(Applicant applicant){
-        return courseService.convertCourseListToCourseViewList(getApplicantCourses(applicant));
-    }
-
-    public List<Course> getApplicantCourses(Applicant applicant){
-        if(applicant == null){
-            throw new RuntimeException("Applicant is null");
-        }
-        return courseService.getCoursesByIds(getApplicantCourseIds(applicant));
-    }
-
-    public List<UUID> getApplicantCourseIds(Applicant applicant){
-        if(applicant == null){
-            throw new RuntimeException("Applicant is null");
-        }
-        return applicantParticipationRepository.findDistinctCourseIdsByApplicant(applicant);
-    }
-
-    public List<UUID> getPrevAttendApplicantCourseIds(Applicant applicant){
-        if(applicant == null){
-            throw new RuntimeException("Applicant is null");
-        }
-        return applicantParticipationRepository.findDistinctCourseIdsByApplicantAndAttendanceStatus(applicant,AttendanceStatus.PREVIOUSLY_ATTENDED);
-    }
-
-    public List<UUID> getAttendingApplicantCourseIds(Applicant applicant){
-        if(applicant == null){
-            throw new RuntimeException("Applicant is null");
-        }
-        return applicantParticipationRepository.findDistinctCourseIdsByApplicantAndAttendanceStatus(applicant,AttendanceStatus.ATTENDING);
-    }
-
-    public List<UUID> getWillAttendApplicantCourseIds(Applicant applicant){
-        if(applicant == null){
-            throw new RuntimeException("Applicant is null");
-        }
-        return applicantParticipationRepository.findDistinctCourseIdsByApplicantAndAttendanceStatus(applicant,AttendanceStatus.WILL_ATTEND);
-    }
 
     public Applicant clearSpecifiedDaysFromCalendar(Applicant applicant,List<DayOfWeek> days){
         if(applicant == null){
