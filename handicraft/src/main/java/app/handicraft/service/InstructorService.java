@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class InstructorService {
@@ -118,6 +119,10 @@ public class InstructorService {
 
     public List<UserView> getAllInstructorViews(){
         return null;
+    }
+
+    public Instructor getInstructorById(UUID id){
+        return instructorRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
 

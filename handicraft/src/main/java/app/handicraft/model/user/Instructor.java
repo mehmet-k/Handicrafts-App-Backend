@@ -3,6 +3,7 @@ package app.handicraft.model.user;
 import app.handicraft.model.handicraft.Handicraft;
 import app.handicraft.model.handicraft.HandicraftType;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -32,6 +33,9 @@ public class Instructor extends User {
         this.weekendFee = weekendFee;
         this.days = new ArrayList<>();
         this.handicrafts = new ArrayList<>();
+    }
+
+    public Instructor() {
     }
 
     public List<Handicraft> getHandicrafts() {

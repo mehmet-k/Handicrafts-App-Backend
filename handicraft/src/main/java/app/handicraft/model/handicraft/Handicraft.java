@@ -13,9 +13,12 @@ import java.util.UUID;
 @Entity
 public class Handicraft {
     @Id
+    @GeneratedValue
     private UUID id;
     private Float fee;
-    @ManyToOne(fetch = FetchType.LAZY)
+    private Boolean isWeekend;
+    private String name;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "handicraft_type_id")
     private HandicraftType handicraftType;
 
@@ -29,11 +32,14 @@ public class Handicraft {
     @ElementCollection
     private List<DayOfWeek> days;
 
-    public Handicraft(Float fee, HandicraftType handicraftType,Course course) {
+    public Handicraft(Float fee, HandicraftType handicraftType,String name) {
         this.fee = fee;
         this.handicraftType = handicraftType;
         this.days = new ArrayList<>();
-        this.course = course;
+        this.name = name;
+    }
+
+    public Handicraft() {
     }
 
     public Instructor getInstructor() {

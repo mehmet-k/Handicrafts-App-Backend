@@ -20,6 +20,9 @@ public class Applicant extends User {
         this.days = new ArrayList<>();
     }
 
+    public Applicant() {
+    }
+
     public List<DayOfWeek> getDays() {
         return days;
     }

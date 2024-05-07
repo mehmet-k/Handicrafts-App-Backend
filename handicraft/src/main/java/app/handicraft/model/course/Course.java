@@ -43,6 +43,9 @@ public class Course {
         this.days = new ArrayList<>();
     }
 
+    public Course() {
+    }
+
     public List<DayOfWeek> getDays() {
         return days;
     }

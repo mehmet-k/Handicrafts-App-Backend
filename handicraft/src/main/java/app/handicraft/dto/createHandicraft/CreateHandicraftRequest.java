@@ -5,7 +5,9 @@ import app.handicraft.model.handicraft.HandicraftType;
 import java.util.UUID;
 
 public record CreateHandicraftRequest(
-        Float fee,
-        UUID handicraftTypeId
+        String name,
+        Boolean isWeekend,
+        UUID handicraftTypeId,
+        UUID instructorId
 ) {
 }

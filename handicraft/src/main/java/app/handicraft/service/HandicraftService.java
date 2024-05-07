@@ -24,12 +24,23 @@ public class HandicraftService {
 
     private final HandicraftRepository handicraftRepository;
 
-    public HandicraftService(HandicraftRepository handicraftRepository) {
+    private final HandicraftTypeService handicraftTypeService;
+
+    private final InstructorService instructorService;
+    public HandicraftService(HandicraftRepository handicraftRepository, HandicraftTypeService handicraftTypeService, InstructorService instructorService) {
         this.handicraftRepository = handicraftRepository;
+        this.handicraftTypeService = handicraftTypeService;
+        this.instructorService = instructorService;
     }
 
     public Handicraft addHandicraft(CreateHandicraftRequest createHandicraftRequest){
-        return null;
+        var handicraftType = handicraftTypeService.getHandicraftById(createHandicraftRequest.handicraftTypeId());
+        var instructor = instructorService.getInstructorById(createHandicraftRequest.instructorId());
+        Float fee = createHandicraftRequest.isWeekend() ? instructor.getWeekendFee() : instructor.getWeekdayFee();
+        var handicraft = new Handicraft(fee,handicraftType,createHandicraftRequest.name());
+        handicraft = handicraftRepository.save(handicraft);
+        instructorService.addHandicraftToInstructor(handicraft,instructor);
+        return handicraft;
     }
 /*
     public Handicraft updateHandicraft(UpdateHandicraftRequest updateHandicraftRequest){
