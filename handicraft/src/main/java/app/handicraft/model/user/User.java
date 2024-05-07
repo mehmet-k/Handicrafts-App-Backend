@@ -3,11 +3,11 @@ package app.handicraft.model.user;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
 import java.util.UUID;
 
-
-@Entity
+@MappedSuperclass
 public abstract class User {
     @GeneratedValue
     @Id
@@ -17,7 +17,6 @@ public abstract class User {
     private String surname;
     private String eMail;
     private String phoneNumber;
-
     private String address;
     public User(String userName, String name, String surname, String eMail, String phoneNumber,String address) {
         this.userName = userName;
@@ -26,6 +25,9 @@ public abstract class User {
         this.eMail = eMail;
         this.phoneNumber = phoneNumber;
         this.address = address;
+    }
+
+    public User() {
     }
 
     public UUID getId() {

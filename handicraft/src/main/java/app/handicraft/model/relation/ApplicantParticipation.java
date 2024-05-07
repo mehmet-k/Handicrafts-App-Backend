@@ -8,23 +8,21 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-public class ApplicantAttends {
+public class ApplicantParticipation {
     @Id
     private UUID id;
     private Float fee;
-    private AttendanceStatus applicationStatus;
+    private AttendanceStatus attendanceStatus;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "applicant_id")
     private Applicant applicant;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
-    private Course courses;
+    private Course course;
 
-    public ApplicantAttends(Float fee, AttendanceStatus applicationStatus, Applicant applicant, Course courses) {
+    public ApplicantParticipation(Float fee, AttendanceStatus attendanceStatus) {
         this.fee = fee;
-        this.applicationStatus = applicationStatus;
-        this.applicant = applicant;
-        this.courses = courses;
+        this.attendanceStatus = attendanceStatus;
     }
 
     public UUID getId() {
@@ -43,12 +41,12 @@ public class ApplicantAttends {
         this.fee = fee;
     }
 
-    public AttendanceStatus getApplicationStatus() {
-        return applicationStatus;
+    public AttendanceStatus getAttendanceStatus() {
+        return attendanceStatus;
     }
 
-    public void setApplicationStatus(AttendanceStatus applicationStatus) {
-        this.applicationStatus = applicationStatus;
+    public void setAttendanceStatus(AttendanceStatus attendanceStatus) {
+        this.attendanceStatus = attendanceStatus;
     }
 
     public Applicant getApplicant() {
@@ -59,11 +57,13 @@ public class ApplicantAttends {
         this.applicant = applicant;
     }
 
-    public Course getCourses() {
-        return courses;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourses(Course courses) {
-        this.courses = courses;
+    public void setCourse(Course course) {
+        this.course = course;
     }
+
+
 }

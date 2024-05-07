@@ -1,9 +1,11 @@
 package app.handicraft.model.handicraft;
 
-import app.handicraft.model.relation.InstructorAttends;
+import app.handicraft.model.course.Course;
 import app.handicraft.model.user.Instructor;
 import jakarta.persistence.*;
 
+import java.time.DayOfWeek;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -11,28 +13,57 @@ import java.util.UUID;
 @Entity
 public class Handicraft {
     @Id
+    @GeneratedValue
     private UUID id;
     private Float fee;
-    @ManyToOne(fetch = FetchType.LAZY)
+    private Boolean isWeekend;
+    private String name;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "handicraft_type_id")
     private HandicraftType handicraftType;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructor_attends_id")
-    private List<InstructorAttends> instructorAttends;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "instructor_id")
+    private Instructor instructor;
 
-    public Handicraft(Float fee, HandicraftType handicraftType) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private Course course;
+    @ElementCollection
+    private List<DayOfWeek> days;
+
+    public Handicraft(Float fee, HandicraftType handicraftType,String name) {
         this.fee = fee;
         this.handicraftType = handicraftType;
-        this.instructorAttends = new ArrayList<>();
+        this.days = new ArrayList<>();
+        this.name = name;
     }
 
-    public List<InstructorAttends> getInstructorAttends() {
-        return instructorAttends;
+    public Handicraft() {
     }
 
-    public void setInstructorAttends(List<InstructorAttends> instructorAttends) {
-        this.instructorAttends = instructorAttends;
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public List<DayOfWeek> getDays() {
+        return days;
+    }
+
+    public void setDays(List<DayOfWeek> days) {
+        this.days = days;
     }
 
     public UUID getId() {
