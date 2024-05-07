@@ -4,11 +4,16 @@ import app.handicraft.dto.createApplicant.CreateApplicantRequest;
 import app.handicraft.dto.createInstructor.CreateInstructorRequest;
 import app.handicraft.dto.updateApplicant.UpdateApplicantRequest;
 import app.handicraft.dto.updateInstructor.UpdateInstructorRequest;
+import app.handicraft.model.handicraft.Handicraft;
 import app.handicraft.model.handicraft.HandicraftType;
 import app.handicraft.model.user.Applicant;
 import app.handicraft.model.user.Instructor;
 import app.handicraft.repository.InstructorRepository;
 import org.springframework.stereotype.Service;
+
+import java.time.DayOfWeek;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class InstructorService {
@@ -28,7 +33,7 @@ public class InstructorService {
         return instructorRepository.save(instructor);
     }
 
-    public Instructor updateInstructer(UpdateInstructorRequest updateInstructorRequest){
+    public Instructor updateInstructor(UpdateInstructorRequest updateInstructorRequest){
         if(updateInstructorRequest==null){
             throw new RuntimeException();
         }
@@ -57,6 +62,38 @@ public class InstructorService {
         }
         instructor.getHandicraftTypeList().add(handicraftType);
         return instructorRepository.save(instructor);
+    }
+
+    public Instructor addHandicraftToInstructor(Handicraft handicraft, Instructor instructor){
+        if(instructor == null){
+            throw new RuntimeException("instructor is null");
+        }
+        if(handicraft == null){
+            throw new RuntimeException("handicraft is null");
+        }
+        if(handicraft.getInstructor() != null){
+            throw new RuntimeException("This handicraft already has an instructor!");
+        }
+        for(DayOfWeek d:handicraft.getDays()){
+            if(instructor.getDays().contains(d)){
+                throw new RuntimeException(STR."Instructor is busy on: \{d.name()}");
+            }
+            else{
+                instructor.getDays().add(d);
+            }
+        }
+        instructor.getHandicrafts().add(handicraft);
+        return instructorRepository.save(instructor);
+    }
+
+    public List<DayOfWeek> getAvailableInstructorDays(Instructor instructor){
+        List<DayOfWeek> availableDays = new ArrayList<>();
+        for(DayOfWeek d:DayOfWeek.values()){
+            if(!instructor.getDays().contains(d)){
+                availableDays.add(d);
+            }
+        }
+        return availableDays;
     }
 
     public boolean checkInstructorAvailability(){return true;}

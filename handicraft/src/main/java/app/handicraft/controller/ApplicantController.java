@@ -4,13 +4,14 @@ import app.handicraft.dto.createApplicant.CreateApplicantRequest;
 import app.handicraft.dto.createApplicant.CreateApplicantResponse;
 import app.handicraft.dto.updateApplicant.UpdateApplicantRequest;
 import app.handicraft.dto.updateApplicant.UpdateApplicantResponse;
+import app.handicraft.model.course.CourseView;
 import app.handicraft.model.user.Applicant;
-import app.handicraft.service.ApplicantAttendsService;
 import app.handicraft.service.ApplicantService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -18,11 +19,8 @@ import java.util.UUID;
 public class ApplicantController {
 
     private final ApplicantService applicantService;
-    private final ApplicantAttendsService applicantAttendsService;
-
-    public ApplicantController(ApplicantService applicantService, ApplicantAttendsService applicantAttendsService) {
+    public ApplicantController(ApplicantService applicantService) {
         this.applicantService = applicantService;
-        this.applicantAttendsService = applicantAttendsService;
     }
 
     @PostMapping
@@ -45,4 +43,10 @@ public class ApplicantController {
     public Applicant getApplicantByUserName(@PathVariable String userName){
         return applicantService.getApplicantByUserName(userName);
     }
+    @GetMapping("/{id}/courses")
+    public List<CourseView> getApplicantCourses(@PathVariable UUID id){
+        var applicant = applicantService.getApplicantById(id);
+        return applicantService.getApplicantCourseViews(applicant);
+    }
+    
 }

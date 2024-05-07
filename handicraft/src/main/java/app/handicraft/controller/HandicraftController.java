@@ -35,4 +35,8 @@ public class HandicraftController {
         return null;
     }
 
+    @PutMapping("/{id}")
+    public Handicraft addHandicraftToInstructor(){
+        return null;
+    }
 }

@@ -1,5 +1,7 @@
 package app.handicraft.util;
 
+import org.springframework.stereotype.Component;
+
 public enum AttendanceStatus {
     ATTENDING("attending"),
     WILL_ATTEND("will attend"),

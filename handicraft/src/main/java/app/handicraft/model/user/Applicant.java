@@ -1,9 +1,9 @@
 package app.handicraft.model.user;
 
-import app.handicraft.model.course.Course;
-import app.handicraft.model.relation.ApplicantAttends;
+import app.handicraft.model.relation.ApplicantParticipation;
 import jakarta.persistence.*;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,19 +11,29 @@ import java.util.List;
 public class Applicant extends User {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "applicant_attends_id")
-    private List<ApplicantAttends> applicantAttends;
-
+    private List<ApplicantParticipation> applicantParticipationList;
+    @ElementCollection
+    private List<DayOfWeek> days;
     public Applicant(String userName, String name, String surname, String eMail, String phoneNumber, String address) {
         super(userName, name, surname, eMail, phoneNumber, address);
-        this.applicantAttends = new ArrayList<>();
+        this.applicantParticipationList = new ArrayList<>();
+        this.days = new ArrayList<>();
     }
 
-    public List<ApplicantAttends> getApplicantAttends() {
-        return applicantAttends;
+    public List<DayOfWeek> getDays() {
+        return days;
     }
 
-    public void setApplicantAttends(List<ApplicantAttends> applicantAttends) {
-        this.applicantAttends = applicantAttends;
+    public void setDays(List<DayOfWeek> days) {
+        this.days = days;
+    }
+
+    public List<ApplicantParticipation> getApplicantAttendsList() {
+        return applicantParticipationList;
+    }
+
+    public void setApplicantAttendsList(List<ApplicantParticipation> applicantParticipationList) {
+        this.applicantParticipationList = applicantParticipationList;
     }
 
 }

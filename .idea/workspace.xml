@@ -5,14 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ab60e41-86e7-44b4-bd5f-b3e4dd3f7442" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/dto/createInstructor/CreateInstructorRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/dto/createInstructor/CreateInstructorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/dto/updateInstructor/UpdateInstructorRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/dto/updateInstructor/UpdateInstructorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/repository/ApplicantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/repository/ApplicantRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/ApplicantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/ApplicantController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/HandicraftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/HandicraftController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/InstructorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/InstructorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/course/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/course/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/handicraft/Handicraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/handicraft/Handicraft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/handicraft/HandicraftType.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/handicraft/HandicraftType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/relation/ApplicantAttends.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/relation/ApplicantParticipation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/relation/InstructorAttends.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/Applicant.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/Applicant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/Instructor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/repository/ApplicantAttendsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/repository/ApplicantParticipationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/repository/InstructorAttendsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/ApplicantAttendsService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/ApplicantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/ApplicantService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/HandicraftService.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/HandicraftService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/InstructorAttendsService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/InstructorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/InstructorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/util/AttendanceStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/util/AttendanceStatus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +39,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -43,23 +59,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.HandicraftApplication.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "emir",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/emirc/Documents/GitHub/Handicrafts-App/handicraft/src/main/java/app/handicraft/dto/updateInstructor",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.HandicraftApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;mehmet-dev&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/emirc/Documents/GitHub/Handicrafts-App/handicraft/src/main/java/app/handicraft/dto/updateInstructor&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\emirc\Documents\GitHub\Handicrafts-App\handicraft\src\main\java\app\handicraft\dto\updateInstructor" />
@@ -98,8 +114,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
       </set>
     </attachedChunks>
   </component>

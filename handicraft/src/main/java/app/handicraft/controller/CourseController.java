@@ -5,6 +5,7 @@ import app.handicraft.dto.createCourse.CreateCourseResponse;
 import app.handicraft.dto.updateCourse.UpdateCourseRequest;
 import app.handicraft.dto.updateCourse.UpdateCourseResponse;
 import app.handicraft.model.course.Course;
+import app.handicraft.model.course.CourseView;
 import app.handicraft.service.ApplicantService;
 import app.handicraft.service.CourseService;
 import app.handicraft.service.HandicraftService;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -49,9 +51,8 @@ public class CourseController {
     @PutMapping("/addHandicraft/{id}")
     public Course addHandicraftToCourse(UUID courseId, UUID handicraftId){
         var course = getCourseById(courseId);
-        /*
-        *
-        * */
+        var handicraft = handicraftService.getHandicraftById(handicraftId);
+        courseService.addHandicraftToCourse(course,handicraft);
         return course;
     }
 
@@ -59,9 +60,17 @@ public class CourseController {
     public Course addApplicantToCourse(UUID courseId,UUID applicantId){
         var course = getCourseById(courseId);
         var applicant = applicantService.getApplicantById(applicantId);
-        /*
-        *
-        * */
+        courseService.addApplicantToCourse(applicant,course);
         return course;
+    }
+
+    @GetMapping("/all")
+    public List<Course> getAllCourses(){
+        return courseService.getAllCourses();
+    }
+
+    @GetMapping("/allViews")
+    public List<CourseView> getAllCourseViews(){
+        return courseService.getAllCourseView();
     }
 }

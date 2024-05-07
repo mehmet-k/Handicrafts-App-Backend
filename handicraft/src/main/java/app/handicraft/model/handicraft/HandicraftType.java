@@ -15,10 +15,10 @@ public class HandicraftType {
     private UUID id;
     private String name;
     private String explanation;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "handicraft_id")
     private List<Handicraft> handicrafts ;
-    @ManyToMany(mappedBy = "courseTypes")
+    @ManyToMany(mappedBy = "handicraftTypeList")
     private List<Instructor> instructors;
 
     public HandicraftType(String name, String explanation) {
