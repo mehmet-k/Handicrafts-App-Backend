@@ -2,6 +2,7 @@ package app.handicraft.model.handicraft;
 
 import app.handicraft.model.course.Course;
 import app.handicraft.model.user.Instructor;
+import app.handicraft.util.Days;
 import jakarta.persistence.*;
 
 import java.time.DayOfWeek;
@@ -29,15 +30,23 @@ public class Handicraft {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     private Course course;
-    @ElementCollection
-    private List<DayOfWeek> days;
 
-    public Handicraft(Float fee, HandicraftType handicraftType,String name,Boolean isWeekend) {
+    private DayOfWeek day;
+
+    public Handicraft(Float fee, HandicraftType handicraftType,String name,Boolean isWeekend,DayOfWeek day) {
         this.fee = fee;
         this.handicraftType = handicraftType;
-        this.days = new ArrayList<>();
         this.name = name;
         this.isWeekend = isWeekend;
+        this.day = day;
+    }
+
+    public DayOfWeek getDay() {
+        return day;
+    }
+
+    public void setDay(DayOfWeek day) {
+        this.day = day;
     }
 
     public Handicraft() {
@@ -73,14 +82,6 @@ public class Handicraft {
 
     public void setCourse(Course course) {
         this.course = course;
-    }
-
-    public List<DayOfWeek> getDays() {
-        return days;
-    }
-
-    public void setDays(List<DayOfWeek> days) {
-        this.days = days;
     }
 
     public UUID getId() {

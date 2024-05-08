@@ -12,11 +12,9 @@ import java.util.UUID;
 public record HandicraftView(
         UUID id,
         Float fee,
-        HandicraftTypeView handicraftType,
-        InstructorView instructor,
-        UUID courseId,
-        String courseName,
-        List<DayOfWeek> days
+        String handicraftTypeName,
+        String instructorName,
+        String day
 ) {
 
 }
