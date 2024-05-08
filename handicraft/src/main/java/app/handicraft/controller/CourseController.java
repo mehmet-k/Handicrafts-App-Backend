@@ -22,7 +22,6 @@ public class CourseController {
 
     private final CourseService courseService;
     private final ApplicantService applicantService;
-
     private final HandicraftService handicraftService;
 
     public CourseController(CourseService courseService, ApplicantService applicantService, HandicraftService handicraftService) {

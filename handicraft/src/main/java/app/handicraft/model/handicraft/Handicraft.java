@@ -32,14 +32,31 @@ public class Handicraft {
     @ElementCollection
     private List<DayOfWeek> days;
 
-    public Handicraft(Float fee, HandicraftType handicraftType,String name) {
+    public Handicraft(Float fee, HandicraftType handicraftType,String name,Boolean isWeekend) {
         this.fee = fee;
         this.handicraftType = handicraftType;
         this.days = new ArrayList<>();
         this.name = name;
+        this.isWeekend = isWeekend;
     }
 
     public Handicraft() {
+    }
+
+    public Boolean getWeekend() {
+        return isWeekend;
+    }
+
+    public void setWeekend(Boolean weekend) {
+        isWeekend = weekend;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Instructor getInstructor() {

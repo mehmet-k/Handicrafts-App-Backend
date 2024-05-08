@@ -16,5 +16,6 @@ public record InstructorView(
         String address,
         Float weekdayFee,
         Float weekendFee,
-        List<DayOfWeek>days) {
+        List<String>days
+) {
 }

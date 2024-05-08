@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public record CreateHandicraftRequest(
         String name,
-        Boolean isWeekend,
+        String day,
         UUID handicraftTypeId,
         UUID instructorId
 ) {

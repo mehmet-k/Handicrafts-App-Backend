@@ -2,13 +2,15 @@ package app.handicraft.controller;
 
 import app.handicraft.dto.createInstructor.CreateInstructorRequest;
 import app.handicraft.dto.createInstructor.CreateInstructorResponse;
+import app.handicraft.model.user.InstructorView;
 import app.handicraft.service.InstructorService;
+import app.handicraft.util.Days;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/instructor")
@@ -26,9 +28,20 @@ public class InstructorController {
         return new ResponseEntity<>(new CreateInstructorResponse(instructor.getUserName(),instructor.getId()), HttpStatus.CREATED);
     }
 
-    public void getInstructorById(){};
+    @GetMapping("/view/id/{id}")
+    public InstructorView getInstructorViewById(@PathVariable UUID id){
+        return instructorService.convertInstructorToView(instructorService.getInstructorById(id));
+    }
 
-    public void getInstructorByUserName(){};
-    public void getAvailableDays(){};
+    @GetMapping("/availableDays{id}")
+    public List<String> getAvailableDays(@PathVariable UUID id){
+        var instructor = instructorService.getInstructorById(id);
+        return Days.convertDaysEnumListToStringList(instructorService.getAvailableInstructorDays(instructor));
+    }
+
+    @GetMapping("/viewAll")
+    public List<InstructorView> getAllInstructorViews(){
+        return instructorService.convertInstructorListToInstructorViewList(instructorService.getAllInstructors());
+    }
 }
 
