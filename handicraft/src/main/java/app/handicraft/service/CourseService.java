@@ -57,7 +57,7 @@ public class CourseService {
         course.getHandicrafts().add(handicraft);
         for(DayOfWeek d: handicraft.getDays()){
             if(course.getDays().contains(d)){
-                throw new RuntimeException(STR."Course program for\{d.name()}is not avaliable");
+                throw new RuntimeException("Course program for" +d.name()+ "is not avaliable");
             }
             else{
                 course.getDays().add(d);

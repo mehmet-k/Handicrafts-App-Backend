@@ -82,7 +82,7 @@ public class InstructorService {
         }
         for(DayOfWeek d:handicraft.getDays()){
             if(instructor.getDays().contains(d)){
-                throw new RuntimeException(STR."Instructor is busy on: \{d.name()}");
+                throw new RuntimeException("Instructor is busy on:" +d.name());
             }
             else{
                 instructor.getDays().add(d);
