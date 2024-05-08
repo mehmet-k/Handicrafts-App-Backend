@@ -54,4 +54,9 @@ public class ApplicantController {
         return applicantParticipationService.getApplicantCourseViews(applicant);
     }
 
+    /*
+    public ResponseEntity<ApplicantLoginResponse> checkApplicantCredentials(@RequestBody ApplicantLoginRequest){
+
+    }
+*/
 }

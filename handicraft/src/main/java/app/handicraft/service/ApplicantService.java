@@ -84,6 +84,7 @@ public class ApplicantService {
         var applicantAttends = new ApplicantParticipation(course.getCurrentCourseFee(), AttendanceStatus.WILL_ATTEND);
         applicantParticipationRepository.save(applicantAttends);
         applicant.getApplicantAttendsList().add(applicantAttends);
+        applicantAttends.setApplicant(applicant);
         applicantRepository.save(applicant);
         return applicantAttends;
     }

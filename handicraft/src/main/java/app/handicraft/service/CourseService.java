@@ -9,6 +9,7 @@ import app.handicraft.model.relation.ApplicantParticipation;
 import app.handicraft.model.user.Applicant;
 import app.handicraft.repository.CourseRepository;
 import app.handicraft.util.AttendanceStatus;
+import app.handicraft.util.Days;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
@@ -55,6 +56,7 @@ public class CourseService {
             throw new RuntimeException("Handicraft is null");
         }
         course.getHandicrafts().add(handicraft);
+        handicraft.setCourse(course);
         for(DayOfWeek d: handicraft.getDays()){
             if(course.getDays().contains(d)){
                 throw new RuntimeException(STR."Course program for\{d.name()}is not avaliable");
@@ -79,6 +81,7 @@ public class CourseService {
         var applicantAttends = applicantService.addCourseToApplicant(applicant,course);
         course.setAttendantCount(course.getAttendantCount()+1);
         course.getApplicantAttendsList().add(applicantAttends);
+        applicantAttends.setCourse(course);
         return courseRepository.save(course);
     }
 
@@ -128,11 +131,15 @@ public class CourseService {
     }
 
     public List<CourseView> convertCourseListToCourseViewList(List<Course> courses){
+        if(courses.isEmpty()){
+            return null;
+        }
         List<CourseView> courseViews = new ArrayList<>();
         for(Course c:courses){
             courseViews
                     .add(new CourseView(c.getId(),c.getName(),c.getCurrentCourseFee(),c.getMaxAttendants(),
-                            c.getAttendantCount(),handicraftService.convertHandicraftListToHandicraftViewList(c.getHandicrafts()),c.getDays()));
+                            c.getAttendantCount(),handicraftService.convertHandicraftListToHandicraftViewList(c.getHandicrafts())
+                            , Days.convertDaysEnumListToStringList(c.getDays())));
         }
         return courseViews;
     }

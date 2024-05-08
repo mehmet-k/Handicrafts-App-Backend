@@ -8,6 +8,7 @@ import app.handicraft.model.handicraft.Handicraft;
 import app.handicraft.model.handicraft.HandicraftType;
 import app.handicraft.model.user.*;
 import app.handicraft.repository.InstructorRepository;
+import app.handicraft.util.Days;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
@@ -34,7 +35,12 @@ public class InstructorService {
         var instructor = new Instructor(createInstructorRequest.userName(), createInstructorRequest.surname(), createInstructorRequest.name(),createInstructorRequest.surname(),
                 createInstructorRequest.phoneNumber(),createInstructorRequest.address(),createInstructorRequest.weekdayFee(),createInstructorRequest.weekendFee());
         if(createInstructorRequest.handicraftTypeIds()!=null){
-            instructor.setHandicraftTypeList(handicraftTypeService.getAllHandicraftTypesByIds(createInstructorRequest.handicraftTypeIds()));
+            //instructor.setHandicraftTypeList(handicraftTypeService.getAllHandicraftTypesByIds(createInstructorRequest.handicraftTypeIds()));
+            for(UUID id: createInstructorRequest.handicraftTypeIds()){
+                HandicraftType handicraftType = handicraftTypeService.getHandicraftById(id);
+                instructor.getHandicraftTypeList().add(handicraftType);
+                handicraftType.getInstructors().add(instructor);
+            }
         }
         return instructorRepository.save(instructor);
     }
@@ -67,6 +73,7 @@ public class InstructorService {
             throw new RuntimeException("handicraftType already exists");
         }
         instructor.getHandicraftTypeList().add(handicraftType);
+        handicraftType.getInstructors().add(instructor);
         return instructorRepository.save(instructor);
     }
 
@@ -89,6 +96,7 @@ public class InstructorService {
             }
         }
         instructor.getHandicrafts().add(handicraft);
+        handicraft.setInstructor(instructor);
         return instructorRepository.save(instructor);
     }
 
@@ -111,10 +119,15 @@ public class InstructorService {
     public List<InstructorView> convertInstructorListToInstructorViewList(List<Instructor> instructors){
         List<InstructorView> instructorViews = new ArrayList<>();
         for(Instructor i:instructors){
-            instructorViews.add(new InstructorView(i.getId(),i.getUserName(),i.getName(),
-                    i.getSurname(),i.geteMail(),i.getPhoneNumber(),i.getAddress(),i.getWeekdayFee(),i.getWeekendFee(),i.getDays()));
+            instructorViews.add(convertInstructorToView(i));
         }
         return instructorViews;
+    }
+
+    public InstructorView convertInstructorToView(Instructor i){
+        return new InstructorView(i.getId(),i.getUserName(),i.getName(),
+                i.getSurname(),i.geteMail(),i.getPhoneNumber(),i.getAddress(),i.getWeekdayFee(),i.getWeekendFee(),
+                Days.convertDaysEnumListToStringList(i.getDays()));
     }
 
     public List<UserView> getAllInstructorViews(){
@@ -124,8 +137,4 @@ public class InstructorService {
     public Instructor getInstructorById(UUID id){
         return instructorRepository.findById(id).orElseThrow(RuntimeException::new);
     }
-
-
-
-
 }

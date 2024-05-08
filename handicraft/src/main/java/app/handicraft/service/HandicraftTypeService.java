@@ -34,12 +34,19 @@ public class HandicraftTypeService {
         return handicraftTypeRepository.findAll();
     }
 
-    public List<HandicraftTypeView> getAllHandicraftTypeViews(List<HandicraftType> handicraftTypes) {
+    public List<HandicraftTypeView> convertHandicraftTypesToViews(List<HandicraftType> handicraftTypes){
         List<HandicraftTypeView> handicraftTypeViewList = new ArrayList<>();
         for (HandicraftType h : handicraftTypes) {
             handicraftTypeViewList.add(new HandicraftTypeView(h.getId(), h.getName(), h.getName()));
         }
         return handicraftTypeViewList;
+    }
+    public List<HandicraftTypeView> getAllHandicraftTypeViews(List<HandicraftType> handicraftTypes) {
+        return convertHandicraftTypesToViews(handicraftTypes);
+    }
+
+    public HandicraftTypeView convertHandicraftTypeToView(HandicraftType h){
+        return new HandicraftTypeView(h.getId(), h.getName(), h.getExplanation());
     }
 
     public List<HandicraftType> getAllHandicraftTypesByIds(List<UUID> ids) {
@@ -52,5 +59,7 @@ public class HandicraftTypeService {
         }
         return handicraftTypeList;
     }
+
+
 
 }
