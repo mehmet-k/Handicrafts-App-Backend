@@ -75,7 +75,7 @@ public class ApplicantService {
         }
         for(DayOfWeek d: course.getDays()){
             if(applicant.getDays().contains(d)){
-                throw new RuntimeException(STR."User program for\{d.name()}is not avaliable");
+                throw new RuntimeException("User program for"+ d.name() +"is not avaliable");
             }
             else{
                 applicant.getDays().add(d);
@@ -102,7 +102,7 @@ public class ApplicantService {
                 applicant.getDays().remove(d);
             }
             else{
-                throw new RuntimeException(STR."applicant doesn't have day: \{d.name()}");
+                throw new RuntimeException("applicant doesn't have day: "+d.name());
             }
         }
         return applicantRepository.save(applicant);
