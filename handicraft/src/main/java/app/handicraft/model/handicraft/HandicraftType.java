@@ -12,19 +12,23 @@ import java.util.UUID;
 public class HandicraftType {
 
     @Id
+    @GeneratedValue
     private UUID id;
     private String name;
     private String explanation;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "handicraft_id")
     private List<Handicraft> handicrafts ;
-    @ManyToMany(mappedBy = "courseTypes")
+    @ManyToMany(mappedBy = "handicraftTypeList")
     private List<Instructor> instructors;
 
     public HandicraftType(String name, String explanation) {
         this.name = name;
         this.explanation = explanation;
         this.handicrafts = new ArrayList<>();
+    }
+
+    public HandicraftType() {
     }
 
     public String getName() {

@@ -1,11 +1,11 @@
 package app.handicraft.model.course;
 
+import app.handicraft.model.handicraft.Handicraft;
 import app.handicraft.model.handicraft.HandicraftType;
-import app.handicraft.model.relation.ApplicantAttends;
-import app.handicraft.model.user.Applicant;
-import app.handicraft.model.user.Instructor;
+import app.handicraft.model.relation.ApplicantParticipation;
 import jakarta.persistence.*;
 
+import java.time.DayOfWeek;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,15 +25,41 @@ public class Course {
     private Integer attendantCount;
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "applicant_attends_id")
-    private List<ApplicantAttends> applicantAttends;
+    private List<ApplicantParticipation> applicantParticipationList;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "handicraft_id")
+    private List<Handicraft> handicrafts;
+    @ElementCollection
+    private List<DayOfWeek> days;
     public Course(String name, HandicraftType courseType, Float baseCourseFee, Integer maxAttendants) {
         this.name = name;
         this.baseCourseFee = baseCourseFee;
         this.isActive = true;
         this.createInstant = Instant.now();
-        this.applicantAttends = new ArrayList<>();
+        this.applicantParticipationList = new ArrayList<>();
         this.maxAttendants = maxAttendants;
         this.attendantCount = 0;
+        this.handicrafts = new ArrayList<>();
+        this.days = new ArrayList<>();
+    }
+
+    public Course() {
+    }
+
+    public List<DayOfWeek> getDays() {
+        return days;
+    }
+
+    public void setDays(List<DayOfWeek> days) {
+        this.days = days;
+    }
+
+    public List<Handicraft> getHandicrafts() {
+        return handicrafts;
+    }
+
+    public void setHandicrafts(List<Handicraft> handicrafts) {
+        this.handicrafts = handicrafts;
     }
 
     public Integer getAttendantCount() {
@@ -108,12 +134,12 @@ public class Course {
         this.currentCourseFee = currentCourseFee;
     }
 
-    public List<ApplicantAttends> getApplicantAttends() {
-        return applicantAttends;
+    public List<ApplicantParticipation> getApplicantAttendsList() {
+        return applicantParticipationList;
     }
 
-    public void setApplicantAttends(List<ApplicantAttends> applicantAttends) {
-        this.applicantAttends = applicantAttends;
+    public void setApplicantAttendsList(List<ApplicantParticipation> applicantParticipationList) {
+        this.applicantParticipationList = applicantParticipationList;
     }
 
 
