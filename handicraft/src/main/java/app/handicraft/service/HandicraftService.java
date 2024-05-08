@@ -50,7 +50,7 @@ public class HandicraftService {
             isWeekend = false;
         }
 
-        var handicraft = new Handicraft(fee,handicraftType,createHandicraftRequest.name(),isWeekend);
+        var handicraft = new Handicraft(fee,handicraftType,createHandicraftRequest.name(),isWeekend,DayOfWeek.valueOf(createHandicraftRequest.day().toUpperCase()));
         handicraft = handicraftRepository.save(handicraft);
         instructorService.addHandicraftToInstructor(handicraft,instructor);
         return handicraft;
@@ -70,9 +70,8 @@ public class HandicraftService {
 
     public HandicraftView convertHandicraftToView(Handicraft h){
         return new HandicraftView(h.getId(),h.getFee(),
-                handicraftTypeService.convertHandicraftTypeToView(h.getHandicraftType()),
-                instructorService.convertInstructorToView(h.getInstructor()),
-                h.getCourse().getId(),h.getCourse().getName(),h.getDays());
+                h.getHandicraftType().getName(),
+                h.getInstructor().getName(),h.getDay().name());
     }
 
     public List<HandicraftView> convertHandicraftListToHandicraftViewList(List<Handicraft> handicrafts){
