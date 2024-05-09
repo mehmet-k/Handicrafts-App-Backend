@@ -34,9 +34,29 @@ public class CourseService {
 
     public Course addCourse(CreateCourseRequest createCourseRequest){
         var course = new Course(createCourseRequest.name(),createCourseRequest.fee(),createCourseRequest.capacity());
+        Float fee = calculateCourseFee(course);
+        course.setDays(getCourseDaysFromHandicraftList(course.getHandicrafts()));
+        course.setCurrentCourseFee(fee);
+        course.setBaseCourseFee(fee);
         courseRepository.save(course);
         course.setHandicrafts(handicraftService.setHandicraftsCourseByIds(createCourseRequest.handicraftIdList(),course));
         return courseRepository.save(course);
+    }
+
+    public List<DayOfWeek> getCourseDaysFromHandicraftList(List<Handicraft> handicrafts){
+        List<DayOfWeek> days = new ArrayList<>();
+        for(Handicraft h:handicrafts){
+            days.add(h.getDay());
+        }
+        return days;
+    }
+
+    public Float calculateCourseFee(Course course){
+        Float fee = 0.0F;
+        for(Handicraft h: course.getHandicrafts()){
+            fee+=h.getFee();
+        }
+        return fee;
     }
 
     public Course updateCourse(UpdateCourseRequest updateCourseRequest){

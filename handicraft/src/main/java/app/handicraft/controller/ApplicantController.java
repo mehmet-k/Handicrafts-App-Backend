@@ -6,6 +6,7 @@ import app.handicraft.dto.updateApplicant.UpdateApplicantRequest;
 import app.handicraft.dto.updateApplicant.UpdateApplicantResponse;
 import app.handicraft.model.course.CourseView;
 import app.handicraft.model.user.Applicant;
+import app.handicraft.model.user.ApplicantView;
 import app.handicraft.model.user.UserView;
 import app.handicraft.service.ApplicantParticipationService;
 import app.handicraft.service.ApplicantService;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -56,8 +58,14 @@ public class ApplicantController {
     }
 
     @GetMapping("/viewAll")
-    public List<UserView> getAllApplicantsView(){
-        return applicantService.getAllApplicantsView(applicantService.getAllApplicants());
+    public List<ApplicantView> getAllApplicantsView(){
+        List<ApplicantView> applicantViews = new ArrayList<>();
+        List<UserView> userViews = applicantService.getAllApplicantsView(applicantService.getAllApplicants());
+        for(UserView u:userViews){
+            applicantViews.add(new ApplicantView(u,applicantParticipationService
+                    .getApplicantCourseViews(applicantService.getApplicantById(u.id()))));
+        }
+        return applicantViews;
     }
 
     /*
