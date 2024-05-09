@@ -1,5 +1,7 @@
 package app.handicraft.controller;
 
+import app.handicraft.dto.addApplicantToCourse.AddApplicantToCourseRequest;
+import app.handicraft.dto.addApplicantToCourse.AddApplicantToCourseResponse;
 import app.handicraft.dto.createCourse.CreateCourseRequest;
 import app.handicraft.dto.createCourse.CreateCourseResponse;
 import app.handicraft.dto.updateCourse.UpdateCourseRequest;
@@ -55,12 +57,12 @@ public class CourseController {
         return course;
     }
 
-    @PutMapping("/addApplicant/{id}")
-    public Course addApplicantToCourse(UUID courseId,UUID applicantId){
-        var course = getCourseById(courseId);
-        var applicant = applicantService.getApplicantById(applicantId);
+    @PutMapping("/addApplicant")
+    public AddApplicantToCourseResponse addApplicantToCourse(@RequestBody AddApplicantToCourseRequest addApplicantToCourseRequest){
+        var course = courseService.getCourseById(addApplicantToCourseRequest.courseId());
+        var applicant = applicantService.getApplicantById(addApplicantToCourseRequest.applicantId());
         courseService.addApplicantToCourse(applicant,course);
-        return course;
+        return new AddApplicantToCourseResponse(course.getId(),applicant.getId());
     }
 
     @GetMapping("/all")
