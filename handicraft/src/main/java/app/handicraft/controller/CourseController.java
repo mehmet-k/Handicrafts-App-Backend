@@ -32,23 +32,27 @@ public class CourseController {
         this.handicraftService = handicraftService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<CreateCourseResponse> createCourse(@RequestBody CreateCourseRequest createCourseRequest){
         var course = courseService.addCourse(createCourseRequest);
         return new ResponseEntity<>(new CreateCourseResponse(course.getId()), HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/get/{id}")
     public ResponseEntity<UpdateCourseResponse> updateCourse(@RequestBody UpdateCourseRequest updateCourseRequest, @PathVariable UUID courseId){
         return null;
         //return new ResponseEntity<>(new CreateCourseResponse(),HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/update/{id}")
     public Course getCourseById(@PathVariable UUID id){
         return null;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/addHandicraft/{id}")
     public Course addHandicraftToCourse(UUID courseId, UUID handicraftId){
         var course = getCourseById(courseId);
@@ -57,6 +61,7 @@ public class CourseController {
         return course;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/addApplicant")
     public AddApplicantToCourseResponse addApplicantToCourse(@RequestBody AddApplicantToCourseRequest addApplicantToCourseRequest){
         var course = courseService.getCourseById(addApplicantToCourseRequest.courseId());
@@ -65,11 +70,13 @@ public class CourseController {
         return new AddApplicantToCourseResponse(course.getId(),applicant.getId());
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/all")
     public List<Course> getAllCourses(){
         return courseService.getAllCourses();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/allViews")
     public List<CourseView> getAllCourseViews(){
         return courseService.getAllCourseViews();

@@ -14,6 +14,7 @@ public record HandicraftView(
         Float fee,
         String handicraftTypeName,
         String instructorName,
+        String instructorSurname,
         String day
 ) {
 

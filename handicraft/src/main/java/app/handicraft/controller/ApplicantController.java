@@ -31,37 +31,44 @@ public class ApplicantController {
         this.applicantParticipationService = applicantParticipationService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<CreateApplicantResponse> createApplicant(@RequestBody CreateApplicantRequest createApplicantRequest){
         var applicant = applicantService.addApplicant(createApplicantRequest);
         return new ResponseEntity<>(new CreateApplicantResponse(applicant.getUserName(),applicant.getId()), HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/{id}")
     public ResponseEntity<UpdateApplicantResponse> updateApplicant(@RequestBody UpdateApplicantRequest updateApplicantRequest,@PathVariable UUID id){
         var applicant = applicantService.updateApplicant(updateApplicantRequest,id);
         return new ResponseEntity<>(new UpdateApplicantResponse(applicant.getId(),applicant.getUserName()),HttpStatus.OK);
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/id/{id}")
     public Applicant getApplicantById(@PathVariable UUID id){
        return applicantService.getApplicantById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/userName/{userName}")
     public Applicant getApplicantByUserName(@PathVariable("userName") String userName){
         return applicantService.getApplicantByUserName(userName);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/userNameView/{userName}")
     public UserView getApplicantViewByUserName(@PathVariable("userName") String userName){
         return applicantService.convertApplicantToView(applicantService.getApplicantByUserName(userName));
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/{id}/courses")
     public List<CourseView> getApplicantCourses(@PathVariable("id") UUID id){
         var applicant = applicantService.getApplicantById(id);
         return applicantParticipationService.getApplicantCourseViews(applicant);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/viewAll")
     public List<ApplicantView> getAllApplicantsView(){
         List<ApplicantView> applicantViews = new ArrayList<>();

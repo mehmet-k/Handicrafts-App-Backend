@@ -22,23 +22,27 @@ public class InstructorController {
         this.instructorService = instructorService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<CreateInstructorResponse> createInstructor(@RequestBody CreateInstructorRequest createInstructorRequest){
         var instructor = instructorService.addInstructor(createInstructorRequest);
         return new ResponseEntity<>(new CreateInstructorResponse(instructor.getUserName(),instructor.getId()), HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/view/id/{id}")
     public InstructorView getInstructorViewById(@PathVariable UUID id){
         return instructorService.convertInstructorToView(instructorService.getInstructorById(id));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/availableDays{id}")
     public List<String> getAvailableDays(@PathVariable UUID id){
         var instructor = instructorService.getInstructorById(id);
         return Days.convertDaysEnumListToStringList(instructorService.getAvailableInstructorDays(instructor));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/viewAll")
     public List<InstructorView> getAllInstructorViews(){
         return instructorService.convertInstructorListToInstructorViewList(instructorService.getAllInstructors());

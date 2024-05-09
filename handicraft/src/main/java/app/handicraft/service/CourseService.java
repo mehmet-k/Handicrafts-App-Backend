@@ -34,12 +34,12 @@ public class CourseService {
 
     public Course addCourse(CreateCourseRequest createCourseRequest){
         var course = new Course(createCourseRequest.name(),createCourseRequest.fee(),createCourseRequest.capacity());
-        Float fee = calculateCourseFee(course);
+        course.setHandicrafts(handicraftService.setHandicraftsCourseByIds(createCourseRequest.handicraftIdList(),course));
         course.setDays(getCourseDaysFromHandicraftList(course.getHandicrafts()));
+        Float fee = calculateCourseFee(course);
         course.setCurrentCourseFee(fee);
         course.setBaseCourseFee(fee);
         courseRepository.save(course);
-        course.setHandicrafts(handicraftService.setHandicraftsCourseByIds(createCourseRequest.handicraftIdList(),course));
         return courseRepository.save(course);
     }
 

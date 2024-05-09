@@ -23,12 +23,14 @@ public class HandicraftTypeController {
         this.handicraftTypeService = handicraftTypeService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<CreateHandicraftTypeResponse> createHandicraftType(@RequestBody CreateHandicraftTypeRequest createHandicraftTypeRequest){
         var handicraftType = handicraftTypeService.addHandicraft(createHandicraftTypeRequest);
         return new ResponseEntity<>(new CreateHandicraftTypeResponse(handicraftType.getId()), HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/allView")
     public List<HandicraftTypeView> getAllHandicraftsView(){
         return handicraftTypeService.getAllHandicraftTypeViews(handicraftTypeService.getAllHandicraftTypes());

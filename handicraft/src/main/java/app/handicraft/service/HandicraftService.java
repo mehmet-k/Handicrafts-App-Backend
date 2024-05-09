@@ -71,7 +71,7 @@ public class HandicraftService {
     public HandicraftView convertHandicraftToView(Handicraft h){
         return new HandicraftView(h.getId(),h.getFee(),
                 h.getHandicraftType().getName(),
-                h.getInstructor().getName(),h.getDay().name());
+                h.getInstructor().getName(),h.getInstructor().getSurname(),h.getDay().name());
     }
 
     public List<HandicraftView> convertHandicraftListToHandicraftViewList(List<Handicraft> handicrafts){
