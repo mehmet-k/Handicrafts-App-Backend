@@ -24,7 +24,7 @@ public class Course {
     private Float currentCourseFee;
     private Integer maxAttendants;
     private Integer attendantCount;
-    @OneToMany(mappedBy = "applicant",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "course",fetch = FetchType.EAGER)
     private List<ApplicantParticipation> applicantParticipationList;
     @OneToMany(mappedBy = "course",fetch = FetchType.EAGER)
     private List<Handicraft> handicrafts;
