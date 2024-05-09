@@ -10,13 +10,14 @@ import java.util.UUID;
 @Entity
 public class ApplicantParticipation {
     @Id
+    @GeneratedValue
     private UUID id;
     private Float fee;
     private AttendanceStatus attendanceStatus;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "applicant_id")
     private Applicant applicant;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_id")
     private Course course;
 

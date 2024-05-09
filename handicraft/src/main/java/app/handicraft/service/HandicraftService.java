@@ -89,4 +89,22 @@ public class HandicraftService {
         return convertHandicraftListToHandicraftViewList(getAllHandicrafts());
     }
 
+    public List<Handicraft> getHandicraftsByIds(List<UUID> ids){
+        List<Handicraft> handicrafts = new ArrayList<>();
+        for(UUID id:ids){
+            handicrafts.add(getHandicraftById(id));
+        }
+        return handicrafts;
+    }
+
+    public List<Handicraft> setHandicraftsCourseByIds(List<UUID> ids,Course course){
+        List<Handicraft> handicrafts = new ArrayList<>();
+        for(UUID id:ids){
+            Handicraft handicraft = getHandicraftById(id);
+            handicraft.setCourse(course);
+            handicrafts.add(handicraft);
+        }
+        return handicrafts;
+    }
+
 }

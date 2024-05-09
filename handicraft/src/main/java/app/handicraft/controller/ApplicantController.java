@@ -6,6 +6,7 @@ import app.handicraft.dto.updateApplicant.UpdateApplicantRequest;
 import app.handicraft.dto.updateApplicant.UpdateApplicantResponse;
 import app.handicraft.model.course.CourseView;
 import app.handicraft.model.user.Applicant;
+import app.handicraft.model.user.UserView;
 import app.handicraft.service.ApplicantParticipationService;
 import app.handicraft.service.ApplicantService;
 import org.springframework.http.HttpStatus;
@@ -52,6 +53,11 @@ public class ApplicantController {
     public List<CourseView> getApplicantCourses(@PathVariable UUID id){
         var applicant = applicantService.getApplicantById(id);
         return applicantParticipationService.getApplicantCourseViews(applicant);
+    }
+
+    @GetMapping("/viewAll")
+    public List<UserView> getAllApplicantsView(){
+        return applicantService.getAllApplicantsView(applicantService.getAllApplicants());
     }
 
     /*

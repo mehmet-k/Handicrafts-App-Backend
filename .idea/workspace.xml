@@ -5,30 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ab60e41-86e7-44b4-bd5f-b3e4dd3f7442" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/ApplicantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/ApplicantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/HandicraftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/HandicraftController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/InstructorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/InstructorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/dto/createCourse/CreateCourseRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/dto/createCourse/CreateCourseRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/course/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/course/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/handicraft/Handicraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/handicraft/Handicraft.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/handicraft/HandicraftType.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/handicraft/HandicraftType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/relation/ApplicantAttends.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/relation/ApplicantParticipation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/relation/InstructorAttends.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/relation/ApplicantParticipation.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/relation/ApplicantParticipation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/Applicant.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/Applicant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/Instructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/model/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/repository/ApplicantAttendsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/repository/ApplicantParticipationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/repository/InstructorAttendsRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/ApplicantAttendsService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/ApplicantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/ApplicantService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/CourseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/HandicraftService.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/HandicraftService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/InstructorAttendsService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/InstructorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/InstructorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/util/AttendanceStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/util/AttendanceStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/handicraft/src/main/java/app/handicraft/service/LoginService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,23 +50,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.HandicraftApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;mehmet-dev&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/emirc/Documents/GitHub/Handicrafts-App/handicraft/src/main/java/app/handicraft/dto/updateInstructor&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.HandicraftApplication.executor": "Run",
+    "JUnit.InstructorServiceTest.testAddInstructor_whenCorrect.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "mehmet-dev",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/emirc/Documents/GitHub/Handicrafts-App/handicraft/src/main/java/app/handicraft/dto/updateInstructor",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\emirc\Documents\GitHub\Handicrafts-App\handicraft\src\main\java\app\handicraft\dto\updateInstructor" />
@@ -98,6 +90,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="InstructorServiceTest.testAddInstructor_whenCorrect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="handicraft" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.handicraft.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.handicraft.service" />
+      <option name="MAIN_CLASS_NAME" value="app.handicraft.service.InstructorServiceTest" />
+      <option name="METHOD_NAME" value="testAddInstructor_whenCorrect" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HandicraftApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="handicraft" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="app.handicraft.HandicraftApplication" />
@@ -108,6 +116,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.HandicraftApplication" />
+        <item itemvalue="JUnit.InstructorServiceTest.testAddInstructor_whenCorrect" />
       </list>
     </recent_temporary>
   </component>
@@ -132,5 +141,15 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

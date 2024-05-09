@@ -24,7 +24,6 @@ public class CourseService {
 
     private final CourseRepository courseRepository;
     private final ApplicantService applicantService;
-
     private final HandicraftService handicraftService;
 
     public CourseService(CourseRepository courseRepository, ApplicantService applicantService, HandicraftService handicraftService) {
@@ -34,7 +33,10 @@ public class CourseService {
     }
 
     public Course addCourse(CreateCourseRequest createCourseRequest){
-        return null;
+        var course = new Course(createCourseRequest.name(),createCourseRequest.fee(),createCourseRequest.capacity());
+        courseRepository.save(course);
+        course.setHandicrafts(handicraftService.setHandicraftsCourseByIds(createCourseRequest.handicraftIdList(),course));
+        return courseRepository.save(course);
     }
 
     public Course updateCourse(UpdateCourseRequest updateCourseRequest){
@@ -57,13 +59,11 @@ public class CourseService {
         }
         course.getHandicrafts().add(handicraft);
         handicraft.setCourse(course);
-        for(DayOfWeek d: handicraft.getDays()){
-            if(course.getDays().contains(d)){
-                throw new RuntimeException(STR."Course program for\{d.name()}is not avaliable");
-            }
-            else{
-                course.getDays().add(d);
-            }
+        if(course.getDays().contains(handicraft.getDay())){
+            throw new RuntimeException(STR."Course program for\{handicraft.getDay().name()}is not avaliable");
+        }
+        else{
+            course.getDays().add(handicraft.getDay());
         }
         return courseRepository.save(course);
     }
