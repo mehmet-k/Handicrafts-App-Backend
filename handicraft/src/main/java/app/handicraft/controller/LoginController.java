@@ -14,6 +14,7 @@ public class LoginController {
         this.loginService = loginService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public Boolean checkCredientials(@RequestBody LoginRequest loginRequest){
         return loginService.checkCredientials(loginRequest);

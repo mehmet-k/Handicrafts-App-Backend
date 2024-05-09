@@ -30,21 +30,25 @@ public class HandicraftController {
         return new ResponseEntity<>(new CreateHandicraftResponse(handicraft.getId(),handicraft.getName(),handicraft.getWeekend()), HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/get/{id}")
     public Handicraft getHandicraftById(@PathVariable UUID id){
         return null;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/{id}")
     public Handicraft addHandicraftToInstructor(){
         return null;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/all")
     public List<Handicraft> getAllHandicrafts(){
         return handicraftService.getAllHandicrafts();
     }
-    
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/viewAll")
     public List<HandicraftView> getAllHandicraftViews(){
         return handicraftService.getAllHandicraftViews();
