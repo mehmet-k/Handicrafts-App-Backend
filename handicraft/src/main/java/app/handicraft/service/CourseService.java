@@ -60,7 +60,7 @@ public class CourseService {
         course.getHandicrafts().add(handicraft);
         handicraft.setCourse(course);
         if(course.getDays().contains(handicraft.getDay())){
-            throw new RuntimeException(STR."Course program for\{handicraft.getDay().name()}is not avaliable");
+            throw new RuntimeException("Course program for "+handicraft.getDay().name()+" is not avaliable");
         }
         else{
             course.getDays().add(handicraft.getDay());
