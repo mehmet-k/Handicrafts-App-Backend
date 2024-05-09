@@ -7,6 +7,7 @@ import app.handicraft.model.relation.ApplicantParticipation;
 import app.handicraft.model.user.Applicant;
 import app.handicraft.repository.ApplicantRepository;
 import app.handicraft.repository.ApplicantParticipationRepository;
+import app.handicraft.util.AttendanceStatus;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,7 +32,7 @@ public class ApplicantServiceTest {
 
     @InjectMocks
     private ApplicantService applicantService;
-/*
+
     @Test
     public void testAddApplicant_whenCorrect() {
         // Create a mock request
@@ -48,12 +49,13 @@ public class ApplicantServiceTest {
 
         // Check that the saved applicant is not null
         assertNotNull(savedApplicant);
-    }*/
-/*
+    }
+
     @Test
     public void testUpdateApplicant_whenCorrect() {
         // Create a mock request
-        UpdateApplicantRequest request = new UpdateApplicantRequest("username", "surname", "name", "surname", "123456789", "address", "email");
+        UpdateApplicantRequest request = new UpdateApplicantRequest("username", "name", "surname", "asd@gma" +
+                "l.comm", "123456789", "address", "email");
 
         // Mock the repository findById method
         UUID applicantId = UUID.randomUUID();
@@ -75,7 +77,7 @@ public class ApplicantServiceTest {
         // Check that the updated applicant is not null
         assertNotNull(updatedApplicant);
     }
-*/
+
     @Test
     public void testGetApplicantById_whenExists() {
         // Create a mock applicant and its ID
@@ -133,8 +135,8 @@ public class ApplicantServiceTest {
 
         // Verify that the participation is not null
         assertNotNull(participation);
-        assertEquals(course.getCurrentCourseFee(), participation.getCourseFee());
-        assertEquals(ApplicantParticipation.AttendanceStatus.WILL_ATTEND, participation.getAttendanceStatus());
+        assertEquals(course.getCurrentCourseFee(), participation.getFee());
+        assertEquals(AttendanceStatus.WILL_ATTEND, participation.getAttendanceStatus());
     }*/
 
     @Test
