@@ -38,28 +38,28 @@ public class ApplicantParticipationService {
         if(applicant == null){
             throw new RuntimeException("Applicant is null");
         }
-        return applicantParticipationRepository.findDistinctCourseIdsByApplicant(applicant);
+        return applicantParticipationRepository.findDistinctCourseIdsByApplicantId(applicant.getId());
     }
 
     public List<UUID> getPrevAttendApplicantCourseIds(Applicant applicant){
         if(applicant == null){
             throw new RuntimeException("Applicant is null");
         }
-        return applicantParticipationRepository.findDistinctCourseIdsByApplicantAndAttendanceStatus(applicant, AttendanceStatus.PREVIOUSLY_ATTENDED);
+        return applicantParticipationRepository.findDistinctCourseIdsByApplicantIdAndAttendanceStatus(applicant.getId(), AttendanceStatus.PREVIOUSLY_ATTENDED);
     }
 
     public List<UUID> getAttendingApplicantCourseIds(Applicant applicant){
         if(applicant == null){
             throw new RuntimeException("Applicant is null");
         }
-        return applicantParticipationRepository.findDistinctCourseIdsByApplicantAndAttendanceStatus(applicant,AttendanceStatus.ATTENDING);
+        return applicantParticipationRepository.findDistinctCourseIdsByApplicantIdAndAttendanceStatus(applicant.getId(),AttendanceStatus.ATTENDING);
     }
 
     public List<UUID> getWillAttendApplicantCourseIds(Applicant applicant){
         if(applicant == null){
             throw new RuntimeException("Applicant is null");
         }
-        return applicantParticipationRepository.findDistinctCourseIdsByApplicantAndAttendanceStatus(applicant,AttendanceStatus.WILL_ATTEND);
+        return applicantParticipationRepository.findDistinctCourseIdsByApplicantIdAndAttendanceStatus(applicant.getId(),AttendanceStatus.WILL_ATTEND);
     }
 
 }

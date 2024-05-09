@@ -48,11 +48,16 @@ public class ApplicantController {
     }
 
     @GetMapping("/userName/{userName}")
-    public Applicant getApplicantByUserName(@PathVariable String userName){
+    public Applicant getApplicantByUserName(@PathVariable("userName") String userName){
         return applicantService.getApplicantByUserName(userName);
     }
+
+    @GetMapping("/userNameView/{userName}")
+    public UserView getApplicantViewByUserName(@PathVariable("userName") String userName){
+        return applicantService.convertApplicantToView(applicantService.getApplicantByUserName(userName));
+    }
     @GetMapping("/{id}/courses")
-    public List<CourseView> getApplicantCourses(@PathVariable UUID id){
+    public List<CourseView> getApplicantCourses(@PathVariable("id") UUID id){
         var applicant = applicantService.getApplicantById(id);
         return applicantParticipationService.getApplicantCourseViews(applicant);
     }

@@ -59,6 +59,10 @@ public class CourseService {
         return fee;
     }
 
+    public Course getCourseById(UUID id){
+        return courseRepository.findById(id).orElseThrow(RuntimeException::new);
+    }
+
     public Course updateCourse(UpdateCourseRequest updateCourseRequest){
         return null;
     }

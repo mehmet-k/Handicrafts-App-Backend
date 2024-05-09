@@ -12,10 +12,9 @@ import java.util.UUID;
 
 @Repository
 public interface ApplicantParticipationRepository extends JpaRepository<ApplicantParticipation, UUID> {
-    public List<UUID> findDistinctCourseIdsByApplicant(Applicant applicant);
+    public List<UUID> findDistinctCourseIdsByApplicantId(UUID applicantId);
 
-    public List<UUID> findDistinctCourseIdsByApplicantAndAttendanceStatus(Applicant applicant, AttendanceStatus attendanceStatus);
+    public List<UUID> findDistinctCourseIdsByApplicantIdAndAttendanceStatus(UUID applicantId, AttendanceStatus attendanceStatus);
 
-    public Boolean existsByApplicantAndCourse(Applicant applicant, Course course);
-
+    public Boolean existsByApplicantIdAndCourseId(UUID applicantId, UUID courseId);
 }

@@ -74,7 +74,7 @@ public class ApplicantService {
         if(course == null){
             throw new RuntimeException("Course is null");
         }
-        if(applicantParticipationRepository.existsByApplicantAndCourse(applicant,course)){
+        if(applicantParticipationRepository.existsByApplicantIdAndCourseId(applicant.getId(),course.getId())){
             throw new RuntimeException("This applicant is already attending to the course");
         }
         for(DayOfWeek d: course.getDays()){
