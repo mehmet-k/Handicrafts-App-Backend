@@ -25,6 +25,7 @@ public class HandicraftType {
         this.name = name;
         this.explanation = explanation;
         this.handicrafts = new ArrayList<>();
+        this.instructors = new ArrayList<>();
     }
 
     public HandicraftType() {
