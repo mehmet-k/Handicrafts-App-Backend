@@ -16,8 +16,7 @@ public class HandicraftType {
     private UUID id;
     private String name;
     private String explanation;
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "handicraft_id")
+    @OneToMany(mappedBy = "handicraftType",fetch = FetchType.LAZY)
     private List<Handicraft> handicrafts ;
     @ManyToMany(mappedBy = "handicraftTypeList")
     private List<Instructor> instructors;

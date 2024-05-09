@@ -6,12 +6,16 @@ import app.handicraft.model.course.Course;
 import app.handicraft.model.course.CourseView;
 import app.handicraft.model.relation.ApplicantParticipation;
 import app.handicraft.model.user.Applicant;
+import app.handicraft.model.user.User;
+import app.handicraft.model.user.UserView;
 import app.handicraft.repository.ApplicantParticipationRepository;
 import app.handicraft.repository.ApplicantRepository;
 import app.handicraft.util.AttendanceStatus;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.View;
 import java.time.DayOfWeek;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -106,6 +110,23 @@ public class ApplicantService {
             }
         }
         return applicantRepository.save(applicant);
+    }
+
+    public UserView convertApplicantToView(Applicant applicant){
+        return new UserView(applicant.getId(),applicant.getUserName(),applicant.getName(),
+                applicant.getSurname(),applicant.geteMail(),applicant.getPhoneNumber(),applicant.getAddress());
+    }
+
+    public List<UserView> getAllApplicantsView(List<Applicant> applicants){
+        List<UserView> applicantViews = new ArrayList<>();
+        for(Applicant a:applicants){
+            applicantViews.add(convertApplicantToView(a));
+        }
+        return applicantViews;
+    }
+
+    public List<Applicant> getAllApplicants(){
+        return applicantRepository.findAll();
     }
 
 }

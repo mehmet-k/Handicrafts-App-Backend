@@ -23,9 +23,9 @@ public class Instructor extends User {
     )
     private List<HandicraftType> handicraftTypeList;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "handicraft_id")
+    @OneToMany(mappedBy = "instructor", fetch = FetchType.EAGER)
     private List<Handicraft> handicrafts;
+
     public Instructor(String userName, String name, String surname, String eMail, String phoneNumber, String address,Float weekdayFee, Float weekendFee) {
         super(userName, name, surname, eMail, phoneNumber, address);
         this.handicraftTypeList = new ArrayList<>();

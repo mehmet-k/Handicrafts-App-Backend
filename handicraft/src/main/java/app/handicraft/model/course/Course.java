@@ -14,6 +14,7 @@ import java.util.UUID;
 @Entity
 public class Course {
     @Id
+    @GeneratedValue
     private UUID id;
     private String name;
     private Instant createInstant;
@@ -23,15 +24,13 @@ public class Course {
     private Float currentCourseFee;
     private Integer maxAttendants;
     private Integer attendantCount;
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "applicant_attends_id")
+    @OneToMany(mappedBy = "applicant",fetch = FetchType.EAGER)
     private List<ApplicantParticipation> applicantParticipationList;
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "handicraft_id")
+    @OneToMany(mappedBy = "course",fetch = FetchType.EAGER)
     private List<Handicraft> handicrafts;
     @ElementCollection
     private List<DayOfWeek> days;
-    public Course(String name, HandicraftType courseType, Float baseCourseFee, Integer maxAttendants) {
+    public Course(String name, Float baseCourseFee, Integer maxAttendants) {
         this.name = name;
         this.baseCourseFee = baseCourseFee;
         this.isActive = true;

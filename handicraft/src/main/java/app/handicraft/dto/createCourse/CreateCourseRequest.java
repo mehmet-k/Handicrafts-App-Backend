@@ -6,6 +6,7 @@ import java.util.UUID;
 public record CreateCourseRequest (
         String name,
         Integer capacity,
+        Float fee,
         List<UUID> handicraftIdList
 ){
 }

@@ -87,14 +87,14 @@ public class InstructorService {
         if(handicraft.getInstructor() != null){
             throw new RuntimeException("This handicraft already has an instructor!");
         }
-        for(DayOfWeek d:handicraft.getDays()){
-            if(instructor.getDays().contains(d)){
-                throw new RuntimeException("Instructor is busy on:" +d.name());
-            }
-            else{
-                instructor.getDays().add(d);
-            }
+
+        if(instructor.getDays().contains(handicraft.getDay())){
+            throw new RuntimeException(STR."Instructor is busy on: \{handicraft.getDay().name()}");
         }
+        else{
+            instructor.getDays().add(handicraft.getDay());
+        }
+
         instructor.getHandicrafts().add(handicraft);
         handicraft.setInstructor(instructor);
         return instructorRepository.save(instructor);

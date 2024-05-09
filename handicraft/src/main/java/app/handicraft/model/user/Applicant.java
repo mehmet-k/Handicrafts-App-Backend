@@ -9,8 +9,7 @@ import java.util.List;
 
 @Entity
 public class Applicant extends User {
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "applicant_attends_id")
+    @OneToMany(mappedBy = "applicant",fetch = FetchType.EAGER)
     private List<ApplicantParticipation> applicantParticipationList;
     @ElementCollection
     private List<DayOfWeek> days;
