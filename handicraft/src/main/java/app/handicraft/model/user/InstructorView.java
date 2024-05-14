@@ -1,5 +1,7 @@
 package app.handicraft.model.user;
 
+import app.handicraft.model.handicraft.HandicraftTypeView;
+import app.handicraft.model.handicraft.HandicraftView;
 import jakarta.persistence.ElementCollection;
 
 import java.time.DayOfWeek;
@@ -16,6 +18,7 @@ public record InstructorView(
         String address,
         Float weekdayFee,
         Float weekendFee,
-        List<String>days
+        List<String>days,
+        List<HandicraftTypeView> handicraftTypes
 ) {
 }

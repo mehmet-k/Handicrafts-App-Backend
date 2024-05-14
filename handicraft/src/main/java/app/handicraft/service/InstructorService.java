@@ -127,7 +127,8 @@ public class InstructorService {
     public InstructorView convertInstructorToView(Instructor i){
         return new InstructorView(i.getId(),i.getUserName(),i.getName(),
                 i.getSurname(),i.geteMail(),i.getPhoneNumber(),i.getAddress(),i.getWeekdayFee(),i.getWeekendFee(),
-                Days.convertDaysEnumListToStringList(i.getDays()));
+                Days.convertDaysEnumListToStringList(i.getDays()),
+                handicraftTypeService.convertHandicraftTypesToViews(i.getHandicraftTypeList()));
     }
 
     public List<UserView> getAllInstructorViews(){
