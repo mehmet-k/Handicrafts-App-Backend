@@ -26,6 +26,9 @@ public class ApplicantParticipation {
         this.attendanceStatus = attendanceStatus;
     }
 
+    public ApplicantParticipation() {
+    }
+
     public UUID getId() {
         return id;
     }
