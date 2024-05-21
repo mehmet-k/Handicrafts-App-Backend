@@ -34,7 +34,7 @@ public class ApplicantService {
         if(createApplicantRequest==null){
             throw new RuntimeException();
         }
-        var applicant = new Applicant(createApplicantRequest.userName(), createApplicantRequest.surname(), createApplicantRequest.name(),createApplicantRequest.surname(),
+        var applicant = new Applicant(createApplicantRequest.userName(), createApplicantRequest.name(), createApplicantRequest.surname(),createApplicantRequest.eMail(),
                 createApplicantRequest.phoneNumber(),createApplicantRequest.address());
         return applicantRepository.save(applicant);
     }

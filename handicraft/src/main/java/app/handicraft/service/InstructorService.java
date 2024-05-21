@@ -32,7 +32,7 @@ public class InstructorService {
         if(createInstructorRequest==null){
             throw new RuntimeException();
         }
-        var instructor = new Instructor(createInstructorRequest.userName(), createInstructorRequest.surname(), createInstructorRequest.name(),createInstructorRequest.surname(),
+        var instructor = new Instructor(createInstructorRequest.userName(), createInstructorRequest.name(), createInstructorRequest.surname(),createInstructorRequest.eMail(),
                 createInstructorRequest.phoneNumber(),createInstructorRequest.address(),createInstructorRequest.weekdayFee(),createInstructorRequest.weekendFee());
         if(createInstructorRequest.handicraftTypeIds()!=null){
             //instructor.setHandicraftTypeList(handicraftTypeService.getAllHandicraftTypesByIds(createInstructorRequest.handicraftTypeIds()));
