@@ -147,7 +147,7 @@ public class ApplicantServiceTest {
         course.setDays(List.of(DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY)); // Assume the course is on Monday and Wednesday
 
         // Stub the repository methods to simulate the applicant is already attending the course
-        when(applicantParticipationRepository.existsByApplicantAndCourse(applicant, course)).thenReturn(true);
+        when(applicantParticipationRepository.existsByApplicantIdAndCourseId(applicant.getId(), course.getId())).thenReturn(true);
 
         // Call the service method and expect a RuntimeException
         assertThrows(RuntimeException.class, () -> applicantService.addCourseToApplicant(applicant, course));
