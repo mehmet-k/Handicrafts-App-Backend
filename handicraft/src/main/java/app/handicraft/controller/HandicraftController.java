@@ -24,6 +24,7 @@ public class HandicraftController {
         this.handicraftService = handicraftService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<CreateHandicraftResponse> createHandicraft(@RequestBody CreateHandicraftRequest createHandicraftRequest){
         var handicraft = handicraftService.addHandicraft(createHandicraftRequest);
